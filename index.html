@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/index.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="banner">
+    <img src="img/pharmacy-title.svg">
+  </div>
+  <div class="left-col">
+    <div class="left-wrapper">
+      <div class="course-info">
+        <h4>Course Editor</h4>
+        <p>Spring 1995: MARS-1</p>
+        <p>Mars Exploration</p>
+      </div>
+      <footer>
+        <p>USC AARDVARC ©</p>
+        <p>Syllabus Generator</p>
+        <p>Version: 2.0</p>
+        <p>Date: July 2, 2018</p>
+        <p>Author:</p>
+        <p>Dab Brill, Mukesh Poptani, Mars Tan</p>
+      </footer>
+    </div>
+    <div class="list-group">
+      <a href="#" class="list-group-item waves-effect active">Course Information</a>
+      <a href="#" class="list-group-item waves-effect">Course Instructors</a>
+      <a href="#" class="list-group-item waves-effect">Program Outcomes</a>
+      <a href="#" class="list-group-item waves-effect">Learning Objectives & Readings</a>
+      <a href="#" class="list-group-item waves-effect">Teaching & Assessment Methods</a>
+      <a href="#" class="list-group-item waves-effect">Grading Breakdown</a>
+      <a href="#" class="list-group-item waves-effect">Exam Return Policy</a>
+      <a href="#" class="list-group-item waves-effect">Event Schedule</a>
+      <a href="#" class="list-group-item waves-effect">Lecturers to Receive USC Course Evaluation</a>
+      <a href="#" class="list-group-item waves-effect">Limited Engagement Faculty Forms</a>
+      <a href="#" class="list-group-item waves-effect">Generate Syllabus Documents</a>
+    </div>
+
+  </div>
+
+  <div class="main ">
+    <div class="main-wrapper">
+
+      <div class="form-group">
+        <label for="locationInput">Course Location</label>
+        <input class="form-control" id="locationInput"></input>
+      </div>
+
+      <div class="form-group">
+        <label for="descriptionInput">Course Description</label>
+        <div class="input-helper">
+          <i>Enter an expanded version of the description published in the University catalogue and describe the student audience for whom the course is appropriate.</i>
+        </div>
+        <textarea class="form-control" id="descriptionInput" rows="7"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="hoursInput">Office Hours Time</label>
+        <input class="form-control" id="hoursInput"></input>
+      </div>
+
+      <div class="form-group">
+        <label for="notesInput">Course Notes</label>
+        <div class="input-helper">
+          <i>Note any unique characteristics of the course of operating procedure.</i>
+          <i>Is the course Web-Enhanced (i.e. Blackboard), Blended or Online?</i>
+          <i>If copies of lecture slides and other class information will be posted on Blackboard, note that here.</i>
+          <i>If multimedia or technology-enhanced learning strategies will be used, please describe them here.</i>
+          <i>Also include here the type of grade if other than the assumed letter grade (ie, Credit No-Credit or Numeric and/or In Progress)</i>
+        </div>
+        <textarea class="form-control" id="notesInput" rows="7"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="assessInput">Description and Assessment of Assignments</label>
+        <div class="input-helper">
+          <i>What kind of work is to be done and how should it be completed, i.e. how the learning outcome will be assessed.</i>
+          <i>Include any assessment and grading rubrics to be used.</i>
+        </div>
+        <textarea class="form-control" id="assessInput" rows="7"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="evaluationInput">Course Evaluation Time and Notes</label>
+        <div class="input-helper">
+          <i>Will you set aside time for course evaluation, typically in the last lecture of the semester</i>
+          <i>If so please indicate this or add any other comments you have on evulation of the course</i>
+        </div>
+        <input class="form-control" id="evaluationInput"></input>
+      </div>
+
+      <div class="form-group">
+        <label for="coordinatorInput">About the Course Coordinator</label>
+        <div class="input-helper">
+          <i>Any information about the coordinators and instructors for the course.</i>
+          <i>This will appear at the end of the syllabus</i>
+        </div>
+        <textarea class="form-control" id="coordinatorInput" rows="7"></textarea>
+      </div>
+      <button class="btn" type="submit" id="continue-btn">Continue</button>
+
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script>
+    $("#continue-btn").click(function() {
+
+    });
+  </script>
+</body>
+
+</html>
