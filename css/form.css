@@ -1,0 +1,70 @@
+input, textarea {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  color: #495057;
+  line-height: 1.5;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  padding: .375rem .75rem 6px 12px;
+}
+
+input:focus, textarea:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+.form-group {
+  margin: 30px 0;
+}
+
+.form-title {
+  display: block;
+  font-weight: bolder;
+  margin-bottom: 12px;
+}
+
+.input-helper {
+  margin-bottom: 12px;
+}
+
+.input-helper i {
+  display: block;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.entry, .entry-add {
+  margin: 10px 0;
+  position: relative;
+}
+
+.entry .select-type {
+  width: 20%;
+}
+
+.entry .select-instructor {
+  margin: 0 15px;
+  width: 35%;
+}
+
+.entry .select-coord {
+  width: 25%;
+}
+
+.entry .mdc-icon-button {
+  position: absolute;
+  right: 20px;
+}
+
+.entry-add select {
+  width: 20%;
+}
+
+select {
+  padding: 12px 5px;
+}
+

@@ -3,132 +3,225 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="css/mdb.min.css" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
-  <link href="css/index.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AARDVARC-MATERIAL</title>
+  <link rel="stylesheet" href="lib/normalize.css">
+  <!--<link rel="stylesheet" href="lib/bootstrap.min.css">-->
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/form.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <script src="lib/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
-  <div class="banner">
+<div class="banner">
+  <div class="banner-logo">
     <img src="img/pharmacy-title.svg">
   </div>
-  <div class="left-col">
-    <div class="left-wrapper">
-      <div class="course-info">
-        <h4>Course Editor</h4>
-        <p>Spring 1995: MARS-1</p>
-        <p>Mars Exploration</p>
-      </div>
-      <footer>
-        <p>USC AARDVARC ©</p>
-        <p>Syllabus Generator</p>
-        <p>Version: 2.0</p>
-        <p>Date: July 2, 2018</p>
-        <p>Author:</p>
-        <p>Dab Brill, Mukesh Poptani, Mars Tan</p>
-      </footer>
+  <div class="banner-title">
+    <h4>Course Editor <span>Spring 1995: MARS-1 (Mars Exploration)</span></h4>
+  </div>
+</div>
+<div class="left-col">
+  <div class="left-wrapper">
+    <div class="course-info">
+      <p></p>
+      <p></p>
     </div>
-    <div class="list-group">
-      <a href="#" class="list-group-item waves-effect active">Course Information</a>
-      <a href="#" class="list-group-item waves-effect">Course Instructors</a>
-      <a href="#" class="list-group-item waves-effect">Program Outcomes</a>
-      <a href="#" class="list-group-item waves-effect">Learning Objectives & Readings</a>
-      <a href="#" class="list-group-item waves-effect">Teaching & Assessment Methods</a>
-      <a href="#" class="list-group-item waves-effect">Grading Breakdown</a>
-      <a href="#" class="list-group-item waves-effect">Exam Return Policy</a>
-      <a href="#" class="list-group-item waves-effect">Event Schedule</a>
-      <a href="#" class="list-group-item waves-effect">Lecturers to Receive USC Course Evaluation</a>
-      <a href="#" class="list-group-item waves-effect">Limited Engagement Faculty Forms</a>
-      <a href="#" class="list-group-item waves-effect">Generate Syllabus Documents</a>
-    </div>
-
+    <footer>
+      <p>USC AARDVARC ©</p>
+      <p>Syllabus Generator</p>
+      <p>Version: 2.0</p>
+      <p>Date: July 2, 2018</p>
+      <p>Author:</p>
+      <p>Dab Brill, Mukesh Poptani, Mars Tan</p>
+    </footer>
+  </div>
+  <div class="mdc-list" id="menu-links">
+    <a href="#" class="mdc-list-item ripple" id="CourseBasics">Course Information</a>
+    <a href="#" class="mdc-list-item ripple" id="Instructors">Course Instructors</a>
+    <a href="#" class="mdc-list-item ripple" id="ProgramOutcomes">Program Outcomes</a>
+    <a href="#" class="mdc-list-item ripple" id="LearningObjectives">Learning Objectives &amp; Readings</a>
+    <a href="#" class="mdc-list-item ripple" id="Methods">Teaching &amp; Assessment Methods</a>
+    <a href="#" class="mdc-list-item ripple" id="Grading">Grading Breakdown</a>
+    <a href="#" class="mdc-list-item ripple" id="ExamReturn">Exam Return Policy</a>
+    <a href="#" class="mdc-list-item ripple" id="MeetingTimes">Event Schedule</a>
+    <a href="#" class="mdc-list-item ripple" id="Evals">Lecturers to Receive USC Course Evaluation</a>
+    <a href="#" class="mdc-list-item ripple" id="LimitedEngagementByClass">Limited Engagement Faculty Forms</a>
+    <a href="#" class="mdc-list-item ripple" id="MakeDocument">Generate Syllabus Documents</a>
   </div>
 
-  <div class="main ">
-    <div class="main-wrapper">
+</div>
 
-      <div class="form-group">
-        <label for="locationInput">Course Location</label>
-        <input class="form-control" id="locationInput"></input>
-      </div>
-
-      <div class="form-group">
-        <label for="descriptionInput">Course Description</label>
-        <div class="input-helper">
-          <i>Enter an expanded version of the description published in the University catalogue and describe the student audience for whom the course is appropriate.</i>
+<div class="main ">
+  <div class="main-wrapper">
+    <div id="main-form">
+      <div class="option">
+        <div class="mdc-form-field">
+          <div class="mdc-checkbox">
+            <input type="checkbox"
+                   class="mdc-checkbox__native-control"
+                   id="checkbox-1"/>
+            <div class="mdc-checkbox__background">
+              <svg class="mdc-checkbox__checkmark"
+                   viewBox="0 0 24 24">
+                <path class="mdc-checkbox__checkmark-path"
+                      fill="none"
+                      d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+              </svg>
+              <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+          </div>
+          <label for="checkbox-1">Checkbox 1</label>
         </div>
-        <textarea class="form-control" id="descriptionInput" rows="7"></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="hoursInput">Office Hours Time</label>
-        <input class="form-control" id="hoursInput"></input>
-      </div>
-
-      <div class="form-group">
-        <label for="notesInput">Course Notes</label>
-        <div class="input-helper">
-          <i>Note any unique characteristics of the course of operating procedure.</i>
-          <i>Is the course Web-Enhanced (i.e. Blackboard), Blended or Online?</i>
-          <i>If copies of lecture slides and other class information will be posted on Blackboard, note that here.</i>
-          <i>If multimedia or technology-enhanced learning strategies will be used, please describe them here.</i>
-          <i>Also include here the type of grade if other than the assumed letter grade (ie, Credit No-Credit or Numeric and/or In Progress)</i>
+      <div class="option">
+        <div class="mdc-form-field">
+          <div class="mdc-checkbox">
+            <input type="checkbox"
+                   class="mdc-checkbox__native-control"
+                   id="checkbox-2"/>
+            <div class="mdc-checkbox__background">
+              <svg class="mdc-checkbox__checkmark"
+                   viewBox="0 0 24 24">
+                <path class="mdc-checkbox__checkmark-path"
+                      fill="none"
+                      d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+              </svg>
+              <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+          </div>
+          <label for="checkbox-2">Checkbox 1</label>
         </div>
-        <textarea class="form-control" id="notesInput" rows="7"></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="assessInput">Description and Assessment of Assignments</label>
-        <div class="input-helper">
-          <i>What kind of work is to be done and how should it be completed, i.e. how the learning outcome will be assessed.</i>
-          <i>Include any assessment and grading rubrics to be used.</i>
-        </div>
-        <textarea class="form-control" id="assessInput" rows="7"></textarea>
-      </div>
 
-      <div class="form-group">
-        <label for="evaluationInput">Course Evaluation Time and Notes</label>
-        <div class="input-helper">
-          <i>Will you set aside time for course evaluation, typically in the last lecture of the semester</i>
-          <i>If so please indicate this or add any other comments you have on evulation of the course</i>
-        </div>
-        <input class="form-control" id="evaluationInput"></input>
-      </div>
-
-      <div class="form-group">
-        <label for="coordinatorInput">About the Course Coordinator</label>
-        <div class="input-helper">
-          <i>Any information about the coordinators and instructors for the course.</i>
-          <i>This will appear at the end of the syllabus</i>
-        </div>
-        <textarea class="form-control" id="coordinatorInput" rows="7"></textarea>
-      </div>
-      <button class="btn" type="submit" id="continue-btn">Continue</button>
+      <ol id="Master">
+        <li>Provide patient care. Includes:
+          <ul>
+            <div>
+              <div class="mdc-form-field">
+                <div class="mdc-checkbox">
+                  <input type="checkbox"
+                         class="mdc-checkbox__native-control"
+                         id="A0"/>
+                  <div class="mdc-checkbox__background">
+                    <svg class="mdc-checkbox__checkmark"
+                         viewBox="0 0 24 24">
+                      <path class="mdc-checkbox__checkmark-path"
+                            fill="none"
+                            d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+                    </svg>
+                    <div class="mdc-checkbox__mixedmark"></div>
+                  </div>
+                </div>
+                <label for="A0">Provide patient centered care</label>
+              </div>
+            </div>
+            <div><input type="checkbox" id="A1">Promote health and wellness<br></div>
+            <div><input type="checkbox" id="A2">Provide population-based care<br></div>
+          </ul>
+        </li>
+        <li>Apply medical and therapeutic knowledge to pharmacy practice. Includes:
+          <ul>
+            <div><input type="checkbox" id="B0">Develop, integrate, and apply knowledge from the foundational sciences (Scientist)<br></div>
+            <div><input type="checkbox" id="B1">Evaluate the scientific literature<br></div>
+            <div><input type="checkbox" id="B2">Explain drug action<br></div>
+            <div><input type="checkbox" id="B3">Solve therapeutic problems<br></div>
+            <div><input type="checkbox" id="B4">Advance population health and patient centered care<br></div>
+          </ul>
+        </li>
+        <li>Demonstrate a comprehensive approach to practice and care. Includes:
+          <ul>
+            <div><input type="checkbox" id="C0">Problem Solving (Problem Solver)<br></div>
+            <div><input type="checkbox" id="C1">Educator (Educator)<br></div>
+            <div><input type="checkbox" id="C2">Patient Advocacy (Advocate)<br></div>
+            <div><input type="checkbox" id="C3">Interprofessional collaboration (Collaborator)<br></div>
+            <div><input type="checkbox" id="C4">Cultural sensitivity (Includer)<br></div>
+            <div><input type="checkbox" id="C5">Communication (Communicator)<br></div>
+          </ul>
+        </li>
+        <li>Demonstrate professional behavior.
+          <ul>
+            <div><input type="checkbox" id="D0">Exhibit behaviors and values that are consistent with the trust given to the profession (Professional)<br></div>
+            <div><input type="checkbox" id="D1">Professionalism in interactions with patients<br></div>
+            <div><input type="checkbox" id="D2">Professionalism in interactions with other healthcare providers<br></div>
+            <div><input type="checkbox" id="D3">Professionalism in interactions with society.<br></div>
+            <div><input type="checkbox" id="D4">Exhibit behaviors that demonstrate accountability and ownership in all professional activities (Professional)<br></div>
+          </ul>
+        </li>
+        <li>Manage and use the resources of the health-care system, includes
+          <ul>
+            <div><input type="checkbox" id="E0">Optimize safety and efficacy of medication use systems (Manager)<br></div>
+            <div><input type="checkbox" id="E1">Human resources<br></div>
+            <div><input type="checkbox" id="E2">Financial resources<br></div>
+            <div><input type="checkbox" id="E3">Technological resources<br></div>
+            <div><input type="checkbox" id="E4">Physical resources<br></div>
+          </ul>
+        </li>
+        <li>Engage in Personal and Professional Development. Includes:
+          <ul>
+            <div><input type="checkbox" id="F0">Self-awareness (Self-aware)<br></div>
+            <div><input type="checkbox" id="F1">Leadership (Leader)<br></div>
+            <div><input type="checkbox" id="F2">Innovation and Entrepreneurship (Innovator)<br></div>
+          </ul>
+        </li>
+      </ol>
 
     </div>
+
+    <button class="mdc-button mdc-button--raised ripple btn" type="submit" id="continue-btn">Continue</button>
   </div>
 
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
   <script>
-    $("#continue-btn").click(function() {
 
-    });
+
+      $("#continue-btn").click(function () {
+
+      });
+
+      $("#menu-links a").click(function () {
+          var id = $(this).attr('id');
+          $("#menu-links a").removeClass('active');
+          $(this).addClass('active');
+          save();
+          switchTo(id);
+      });
+
+      const formField = new mdc.formField.MDCFormField(document.querySelector('.mdc-form-field'));
+      const checkbox = new mdc.checkbox.MDCCheckbox(document.querySelector('.mdc-checkbox'));
+      formField.input = checkbox;
+
+      function switchTo(page) {
+          history.pushState(null, page, page + ".htm");
+          $("#main-form").load("pages/" + page + ".htm", function (responseTxt, statusTxt, xhr) {
+              if (statusTxt === "success") {
+                  updateField();
+              }
+              if (statusTxt === "error")
+                  alert("Error: " + xhr.status + ": " + xhr.statusText);
+          });
+      }
+
+      function save() {
+          console.log("saving");
+      }
+
+      function updateField() {
+          $('.ripple').each(function () {
+              mdc.ripple.MDCRipple.attachTo($(this)[0]);
+          });
+
+          $('.main-wrapper .mdc-icon-button').each(function () {
+              // mdc.ripple.MDCRipple.attachTo($(this)[0]);
+              const iconButtonRipple = new mdc.ripple.MDCRipple($(this)[0]);
+              iconButtonRipple.unbounded = true;
+          });
+      }
   </script>
 </body>
 
