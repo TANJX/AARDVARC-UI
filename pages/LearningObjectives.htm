@@ -1,0 +1,14 @@
+<ol id="Master" class="custom-form"></ol>
+
+<script src="js/header.js"></script>
+<script src="js/checkbox.js"></script>
+<script>
+    var CBtype = "LearningObjectives";
+    function bootup() {
+        getHeader();
+        getList("LearningObjectives.json");
+        initializeValues();
+        getExistingValues(CBtype);
+    }
+    bootup();
+</script>
