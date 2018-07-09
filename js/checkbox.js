@@ -163,11 +163,11 @@ function makeSection(s) {
         var $mdc_checkbox = $("<div class='mdc-checkbox'></div>");
         var $box = makeBox(s, j);
         $mdc_checkbox.append($box);
-        $mdc_checkbox.append("<div class=\"mdc-checkbox__background\">" +
-            "<svg class=\"mdc-checkbox__checkmark\" viewBox=\"0 0 24 24\">" +
-            "<path class=\"mdc-checkbox__checkmark-path\" fill=\"none\" d=\"M1.73,12.91 8.1,19.28 22.79,4.59\"></path>" +
+        $mdc_checkbox.append("<div class='mdc-checkbox__background'>" +
+            "<svg class='mdc-checkbox__checkmark' viewBox='0 0 24 24'>" +
+            "<path class='mdc-checkbox__checkmark-path' fill='none' d='M1.73,12.91 8.1,19.28 22.79,4.59'></path>" +
             "</svg>" +
-            "<div class=\"mdc-checkbox__mixedmark\"></div>" +
+            "<div class='mdc-checkbox__mixedmark'></div>" +
             "</div>");
         $form_field.append($mdc_checkbox);
         $form_field.append("<label for='" + sec.Options[j].Code + "'>" + sec.Options[j].Text + "</label>");
@@ -198,8 +198,7 @@ function getList(filename) {
 }
 
 function refreshInterface() {
-    //alert(JSON.stringify(dict));
-    $("#Master").html("<ol id='Master'></ol>");
+    $("#Master").html("");
     for (var i in sections) {
         $("#Master").append(makeSection(i));
     }

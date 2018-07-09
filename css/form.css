@@ -35,6 +35,7 @@ input:focus, textarea:focus {
   display: block;
   color: #555;
   font-size: 0.9rem;
+  margin: 5px 0;
 }
 
 .entry, .entry-add {
@@ -78,7 +79,7 @@ ol {
   padding-left: 1em;
 }
 
-.custom-form textarea, .custom-form input {
+.custom-form textarea, .custom-form input[type="text"] {
   width: calc(100% - 75px);
 }
 
