@@ -58,11 +58,7 @@
 
 <div class="main">
   <div class="main-wrapper">
-    <div id="main-form">
-
-
-    </div>
-
+    <div id="main-form"></div>
     <button class="mdc-button mdc-button--raised ripple btn" type="submit" id="continue-btn">Continue</button>
   </div>
 </div>
@@ -96,23 +92,29 @@
     switchTo(currentPage);
 
     $("#continue-btn").click(function () {
-
+        save();
     });
 
     $("#menu-links a").click(function () {
         var id = $(this).attr('id');
-        $("#menu-links a").removeClass('active');
-        $(this).addClass('active');
-        save();
+        if (currentPage === id) return;
+        if (changed && confirm('Save changes?')) {
+            save();
+        } else {
+
+        }
         switchTo(id);
     });
 
     function switchTo(page) {
-        history.pushState(null, null, "index.php?page=" + page + "&ClassCode=" + classCode);
         $("#main-form").load("pages/" + page + ".htm", function (responseTxt, statusTxt, xhr) {
             if (statusTxt === "success") {
+                $("#menu-links a").removeClass('active');
+                $("#menu-links a[id='" + page + "']").addClass('active');
+                history.pushState(null, null, "index.php?page=" + page + "&ClassCode=" + classCode);
                 updateField();
                 currentPage = page;
+                changed = false;
             }
             if (statusTxt === "error")
                 alert("Error: " + xhr.status + ": " + xhr.statusText);
@@ -129,15 +131,26 @@
         });
 
         $('.main-wrapper .mdc-icon-button').each(function () {
-            // mdc.ripple.MDCRipple.attachTo($(this)[0]);
             const iconButtonRipple = new mdc.ripple.MDCRipple($(this)[0]);
             iconButtonRipple.unbounded = true;
         });
+        setTimeout(function () {
+            $("select, input, textarea").change(function () {
+                console.log("changed!");
+                changed = true;
+            });
+            $("#main-form button").click(function () {
+                console.log("clicked!");
+                changed = true;
+            });
+        }, 1000);
+    }
 
-        // const formField = new mdc.formField.MDCFormField(document.querySelector('.mdc-form-field'));
-        // const checkbox = new mdc.checkbox.MDCCheckbox(document.querySelector('.mdc-checkbox'));
-        // formField.input = checkbox;
-
+    var changed = false;
+    window.onbeforeunload = function () {
+        if (changed) {
+            return "";
+        }
     }
 </script>
 </body>

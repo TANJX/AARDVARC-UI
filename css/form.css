@@ -78,10 +78,30 @@ ol {
   padding-left: 1em;
 }
 
-.custom-form textarea {
+.custom-form textarea, .custom-form input {
   width: calc(100% - 75px);
+}
+
+.custom-form.input-compact .entry {
+  margin: 5px 0;
 }
 
 .delete-btn {
   color: rgba(224, 69, 95, 1);
+}
+
+.grade-entry {
+  display: grid;
+  grid-template-columns: 100px 2fr 80px .75fr 50px;
+  grid-column-gap: 1em;
+}
+
+.grade-entry label {
+  text-align: right;
+  margin-top: 15px;
+}
+.grade-entry input {
+  display: inline;
+}
+.grade-entry-add {
 }

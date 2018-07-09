@@ -215,6 +215,12 @@ function makeInstructorTypeDiv(i) {
         //alert("not null "+myType);
         //alert(JSON.stringify(instructorsByType[myType]));
         var $instrDropdown = $("<select class='select-instructor'></select>");
+        $instrDropdown.append($('<option>', {
+            value: "null",
+            text: "Select Instructor",
+            selected: false,
+            disabled: true
+        }));
         for (var j in instructorsByType[myType]) {
             var pos = instructorsByType[myType][j];
             var posName = pos.LastName + ", " + pos.FirstName;
