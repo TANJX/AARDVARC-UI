@@ -112,7 +112,6 @@
                 $("#menu-links a").removeClass('active');
                 $("#menu-links a[id='" + page + "']").addClass('active');
                 history.pushState(null, null, "index.php?page=" + page + "&ClassCode=" + classCode);
-                updateField();
                 currentPage = page;
                 changed = false;
             }
@@ -125,28 +124,6 @@
         console.log("saving");
     }
 
-    function updateField() {
-        $('.ripple').each(function () {
-            mdc.ripple.MDCRipple.attachTo($(this)[0]);
-        });
-
-        $('.main-wrapper .mdc-icon-button').each(function () {
-            const iconButtonRipple = new mdc.ripple.MDCRipple($(this)[0]);
-            iconButtonRipple.unbounded = true;
-        });
-        setTimeout(function () {
-            $("select, input, textarea").change(function () {
-                console.log("changed!");
-                changed = true;
-            });
-            $("#main-form button").click(function () {
-                console.log("clicked!");
-                changed = true;
-            });
-        }, 1000);
-    }
-
-    var changed = false;
     window.onbeforeunload = function () {
         if (changed) {
             return "";

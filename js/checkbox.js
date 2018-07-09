@@ -203,6 +203,7 @@ function refreshInterface() {
     for (var i in sections) {
         $("#Master").append(makeSection(i));
     }
+    updateField();
 }
 
 function getExistingValues(boxType) {

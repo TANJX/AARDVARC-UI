@@ -98,6 +98,7 @@ function dispAssignments() {
         $top.append(makeInputItem(i));
     }
     $top.append(makeAddItem(items.length));
+    updateField();
 }
 
 function send() {

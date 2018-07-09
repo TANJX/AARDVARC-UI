@@ -275,6 +275,7 @@ function makeInstructorList() {
         var $newDiv = makeInstructorTypeDiv(i);
         $("#InstructorList").append($newDiv);
     }
+    updateField();
 }
 
 function inArray(key, arr) {

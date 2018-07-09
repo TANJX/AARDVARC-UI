@@ -12,7 +12,6 @@ function applyClassData(){
     $("#EvalInfo").val(headerClassData.EvalInfo);
 }
 var wait = false;
-bootup();
 function send(){
     var ball = {"ClassCode":classCode,
         "Location":$("#Location").val(),
@@ -40,15 +39,3 @@ function send(){
         }
     });
 }
-$("#SendToServer").click(function(){
-    send();
-});
-$("#SendNext").click(function(){
-    wait = true;
-    send();
-    while(wait){}
-    goPage("Instructors");
-});
-$("#Back").click(function(){
-    goPage("Portal");
-});

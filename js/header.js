@@ -2,10 +2,12 @@ var classCode = getGetVariable("ClassCode");
 var headerClassData = null;
 var hostName = window.location.hostname;
 var isAGradClass = false;
+var changed = false;
+
 function getGetVariable(variable) {
     var query = window.location.search.substring(1);
     var vars = query.split("&");
-    for (var i=0;i<vars.length;i++) {
+    for (var i = 0; i < vars.length; i++) {
         var pair = vars[i].split("=");
         if (pair[0] == variable) {
             return pair[1];
@@ -13,24 +15,25 @@ function getGetVariable(variable) {
     }
     return null;
 }
-function getHeader(){
+
+function getHeader() {
     $.ajax({
         'async': false,
         'type': "POST",
         'dataType': 'html',
         'url': "../Server/EncodeCourseHeader.php",
-        'data':{"AccessCode":classCode},
+        'data': {"AccessCode": classCode},
         'success': function (ball) {
-            if ((ball.substring(0,7) == "NOCODE") || (ball.substring(0,7) == "BADCODE")){
+            if ((ball.substring(0, 7) == "NOCODE") || (ball.substring(0, 7) == "BADCODE")) {
                 $("#CourseTitle").text("Invalid Course Code");
-            }else{
+            } else {
                 $("#Entry").show();
                 var jason = JSON.parse(ball);
                 var sinfo = jason.SemesterInfo;
                 var cinfo = jason.CourseInfo;
                 headerClassData = cinfo;
                 $("#CourseTitle").text(cinfo.Title);
-                var semString = sinfo.Term+" "+sinfo.Year+": "+cinfo.CourseID;
+                var semString = sinfo.Term + " " + sinfo.Year + ": " + cinfo.CourseID;
                 $("#SemesterTitle").text(semString);
                 isAGradClass = cinfo.Program == "PhDMS";
             }
@@ -38,19 +41,42 @@ function getHeader(){
     });
     getFooter();
 }
-function getFooter(){
+
+function getFooter() {
     $.ajax({
         'async': true,
         'type': "POST",
         'dataType': 'html',
         'url': "../Resources/Version.html",
-        'data':{},
+        'data': {},
         'success': function (ball) {
             $("#Footer").html(ball);
         }
     });
 
 }
-function goPage(pagename,extras=""){
-    window.location="../Coord/"+pagename+".html?ClassCode="+classCode+extras;
+
+function goPage(pagename, extras = "") {
+    window.location = "../Coord/" + pagename + ".html?ClassCode=" + classCode + extras;
+}
+
+function updateField() {
+    $('.ripple').each(function () {
+        mdc.ripple.MDCRipple.attachTo($(this)[0]);
+    });
+
+    $('.main-wrapper .mdc-icon-button').each(function () {
+        const iconButtonRipple = new mdc.ripple.MDCRipple($(this)[0]);
+        iconButtonRipple.unbounded = true;
+    });
+    setTimeout(function () {
+        $("select, input, textarea").change(function () {
+            console.log("changed!");
+            changed = true;
+        });
+        $("#main-form button").click(function () {
+            console.log("clicked!");
+            changed = true;
+        });
+    }, 1000);
 }
