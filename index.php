@@ -98,6 +98,7 @@
     echo 'currentPage = "' . $currentPage . '";';
     ?>
     switchTo(currentPage);
+    getHeader();
 
     $("#continue-btn").click(function () {
         save();

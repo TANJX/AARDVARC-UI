@@ -73,7 +73,6 @@ function bootup() {
 
             initializeInstructorList(facTable, instrInfo);
             makeInstructorList();
-            getHeader();
         }
     });
 }

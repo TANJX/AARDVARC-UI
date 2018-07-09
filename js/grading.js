@@ -1,5 +1,4 @@
 function bootup() {
-    getHeader();
     load();
 }
 
