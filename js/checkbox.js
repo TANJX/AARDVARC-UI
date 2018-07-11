@@ -119,7 +119,7 @@ function clearAnswers(s) {
 
 function makeBox(s, j) {
     var op = sections[s].Options[j];
-    $ret = $("<input type='checkbox' class='mdc-checkbox__native-control' id='" + op.Code + "'>");
+    var $ret = $("<input type='checkbox' class='mdc-checkbox__native-control' id='" + op.Code + "'>");
     $ret.change(function () {
         if (sections[s].Exclusive) {
             clearAnswers(s);
