@@ -2,11 +2,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --mdc-theme-primary: #980001;
-  --mdc-theme-secondary: #ffcb03;
-}
-
 .banner {
   position: fixed;
   width: 100%;
@@ -101,7 +96,21 @@ footer p {
   margin: 20px 0;
 }
 
+hr {
+  border-color: #f4f4f4;
+  border-width: 1px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 /* color */
+
+:root {
+  --mdc-theme-primary: #980001;
+  --mdc-theme-secondary: #ffcb03;
+}
 
 a.mdc-list-item {
   color: #980001;

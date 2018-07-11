@@ -56,30 +56,39 @@ function getFooter() {
 
 }
 
-function updateField() {
-    $('.ripple').each(function () {
+function updateField(div) {
+    if (typeof div === "undefined") {
+        div = ' ';
+    }
+    $(div + ' .ripple').each(function () {
         mdc.ripple.MDCRipple.attachTo($(this)[0]);
     });
 
-    $('.main-wrapper .mdc-icon-button').each(function () {
+    $(div + '.main-wrapper .mdc-icon-button').each(function () {
         const iconButtonRipple = new mdc.ripple.MDCRipple($(this)[0]);
         iconButtonRipple.unbounded = true;
     });
-    $("select, input, textarea").change(function () {
+    $(div + "select, " + div + "input," + div + "textarea").change(function () {
         console.log("changed!");
         changed = true;
     });
-    $("#main-form button").click(function () {
+    $(div + "#main-form button").click(function () {
         console.log("clicked!");
         changed = true;
     });
-    $('.mdc-form-field').each(function () {
+    $(div + '.mdc-form-field').each(function () {
         var formField = new mdc.formField.MDCFormField($(this)[0]);
-        var e = null;
-        e = $(this).children(".mdc-checkbox");
+        var e = $(this).children(".mdc-checkbox");
         if (typeof e[0] !== "undefined") {
             formField.input = new mdc.checkbox.MDCCheckbox(e[0]);
+        } else {
+            e = $(this).children(".mdc-radio");
+            if (typeof e[0] !== "undefined") {
+                formField.input = new mdc.radio.MDCRadio(e[0]);
+                console.log(e[0]);
+            }
         }
+
     });
 }
 

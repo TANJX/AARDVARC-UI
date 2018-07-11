@@ -13,7 +13,7 @@
     font-weight: bold;
   }
 </style>
-<label class="form-title">Instructors</label>
+<h3 class="form-title">Instructors</h3>
 <div class="input-helper">
   <i>If an instructor is not listed, please contact Dr. Haworth (ihaworth@usc.edu)</i>
   <i>Please include their name, affiliation, title, degree, and e-mail address.</i>
@@ -22,138 +22,168 @@
 
 <div id="InstructorList"></div>
 
-<label class="form-title">Autoadd Meeting Dates</label>
+<div class="section">
 
-<label for="startDate">Start Day:</label><input type="date" id="startDate">
-<label for="endDate">End Day:</label><input type="date" id="endDate">
-<div id="RegularScheduleSelect">
-  <p>The meeting times for this course are</p>
-  <div class="mdc-form-field">
-    <div class="mdc-radio">
-      <input class="mdc-radio__native-control" type="radio" name="IrregularTimes" id="radio-1" value="NO">
-      <div class="mdc-radio__background">
-        <div class="mdc-radio__outer-circle"></div>
-        <div class="mdc-radio__inner-circle"></div>
-      </div>
+  <h3 class="form-title">Autoadd Meeting Dates</h3>
+
+  <div class="form-section grid-2">
+    <div class="half left">
+      <label for="startDate" class="m-t-10px">Start Date:</label>
+      <input type="date" id="startDate">
     </div>
-    <label for="radio-1">Consistent</label>
-  </div>
-  <div class="mdc-form-field">
-    <div class="mdc-radio">
-      <input class="mdc-radio__native-control" type="radio" name="IrregularTimes" id="radio-2" value="YES">
-      <div class="mdc-radio__background">
-        <div class="mdc-radio__outer-circle"></div>
-        <div class="mdc-radio__inner-circle"></div>
-      </div>
+    <div class="half right">
+      <span></span>
+      <label for="endDate" class="m-t-10px">End Date:</label>
+      <input type="date" id="endDate">
     </div>
-    <label for="radio-2">Irregular</label>
   </div>
 
+  <div id="RegularScheduleSelect" class="form-section">
+    <div class="grid-2">
+      <div class="m-t-10px">
+        <label class="">The meeting times for this course are</label>
+      </div>
+      <div class="grid-2">
+        <div class="mdc-form-field">
+          <div class="mdc-radio">
+            <input class="mdc-radio__native-control" type="radio" name="IrregularTimes" id="radio-1" value="NO">
+            <div class="mdc-radio__background">
+              <div class="mdc-radio__outer-circle"></div>
+              <div class="mdc-radio__inner-circle"></div>
+            </div>
+          </div>
+          <label for="radio-1">Consistent</label>
+        </div>
+        <div class="mdc-form-field">
+          <div class="mdc-radio">
+            <input class="mdc-radio__native-control" type="radio" name="IrregularTimes" id="radio-2" value="YES">
+            <div class="mdc-radio__background">
+              <div class="mdc-radio__outer-circle"></div>
+              <div class="mdc-radio__inner-circle"></div>
+            </div>
+          </div>
+          <label for="radio-2">Irregular</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-helper m-t-10px">
+      <i>This option determines whether the selected days of week below will be displayed on the syllabus' heading</i>
+    </div>
+  </div>
+
+  <div class="form-section grid-7">
+    <div class="mdc-form-field">
+      <div class="mdc-checkbox">
+        <input type="checkbox" class="mdc-checkbox__native-control DOW" id="DOW-0" value="0">
+        <div class="mdc-checkbox__background">
+          <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+          </svg>
+          <div class="mdc-checkbox__mixedmark"></div>
+        </div>
+      </div>
+      <label for="DOW-0">Sun</label>
+    </div>
+    <div class="mdc-form-field">
+      <div class="mdc-checkbox">
+        <input type="checkbox" class="mdc-checkbox__native-control DOW" id="DOW-1" value="1">
+        <div class="mdc-checkbox__background">
+          <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+          </svg>
+          <div class="mdc-checkbox__mixedmark"></div>
+        </div>
+      </div>
+      <label for="DOW-1">Mon</label>
+    </div>
+    <div class="mdc-form-field">
+      <div class="mdc-checkbox">
+        <input type="checkbox" class="mdc-checkbox__native-control DOW" id="DOW-2" value="2">
+        <div class="mdc-checkbox__background">
+          <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+          </svg>
+          <div class="mdc-checkbox__mixedmark"></div>
+        </div>
+      </div>
+      <label for="DOW-2">Tue</label>
+    </div>
+    <div class="mdc-form-field">
+      <div class="mdc-checkbox">
+        <input type="checkbox" class="mdc-checkbox__native-control DOW" id="DOW-3" value="3">
+        <div class="mdc-checkbox__background">
+          <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+          </svg>
+          <div class="mdc-checkbox__mixedmark"></div>
+        </div>
+      </div>
+      <label for="DOW-3">Wed</label>
+    </div>
+    <div class="mdc-form-field">
+      <div class="mdc-checkbox">
+        <input type="checkbox" class="mdc-checkbox__native-control DOW" id="DOW-4" value="4">
+        <div class="mdc-checkbox__background">
+          <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+          </svg>
+          <div class="mdc-checkbox__mixedmark"></div>
+        </div>
+      </div>
+      <label for="DOW-4">Thur</label>
+    </div>
+    <div class="mdc-form-field">
+      <div class="mdc-checkbox">
+        <input type="checkbox" class="mdc-checkbox__native-control DOW" id="DOW-5" value="5">
+        <div class="mdc-checkbox__background">
+          <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+          </svg>
+          <div class="mdc-checkbox__mixedmark"></div>
+        </div>
+      </div>
+      <label for="DOW-5">Fri</label>
+    </div>
+    <div class="mdc-form-field">
+      <div class="mdc-checkbox">
+        <input type="checkbox" class="mdc-checkbox__native-control DOW" id="DOW-6" value="6">
+        <div class="mdc-checkbox__background">
+          <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+          </svg>
+          <div class="mdc-checkbox__mixedmark"></div>
+        </div>
+      </div>
+      <label for="DOW-6">Sat</label>
+    </div>
+  </div>
+
+
+  <div class="form-section grid-2">
+    <div class="half left">
+      <label for="dfltStart" class="m-t-10px">Class Starts:</label>
+      <input type="time" id="dfltStart" name="startTime">
+    </div>
+    <div class="half right">
+      <span></span>
+      <label for="dfltEnd" class="m-t-10px">Class Ends:</label>
+      <input type="time" name="endTime" id="dfltEnd">
+    </div>
+  </div>
+
+  <div class="form-section">
+    <button type="button" id="MakeMeets" class="mdc-button mdc-button--outlined ripple">Fill out meeting times</button>
+  </div>
+
+</div>
+
+<div class="section">
+  <h3 class="form-title">Meeting Dates</h3>
+  <div id="MeetingTimes-div"></div>
   <div class="input-helper">
-    <i>This option determines whether the selected days of week below will be displayed on the syllabus' heading</i>
-  </div>
-
+    <i>Please be sure to reserve time in class for students to complete your course evaluations during the last week of class. Please inform Maryann Wu (maryann@usc.edu), Director of Assessment, of all instructors who should be evaluated in your course.</i></div>
 </div>
-
-<div>
-  <div class="mdc-form-field">
-    <div class="mdc-checkbox">
-      <input type="checkbox" class="mdc-checkbox__native-control" id="DOW-0" value="0">
-      <div class="mdc-checkbox__background">
-        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-        </svg>
-        <div class="mdc-checkbox__mixedmark"></div>
-      </div>
-    </div>
-    <label for="DOW-0">Sun</label>
-  </div>
-  <div class="mdc-form-field">
-    <div class="mdc-checkbox">
-      <input type="checkbox" class="mdc-checkbox__native-control" id="DOW-1" value="1">
-      <div class="mdc-checkbox__background">
-        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-        </svg>
-        <div class="mdc-checkbox__mixedmark"></div>
-      </div>
-    </div>
-    <label for="DOW-1">Mon</label>
-  </div>
-  <div class="mdc-form-field">
-    <div class="mdc-checkbox">
-      <input type="checkbox" class="mdc-checkbox__native-control" id="DOW-2" value="2">
-      <div class="mdc-checkbox__background">
-        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-        </svg>
-        <div class="mdc-checkbox__mixedmark"></div>
-      </div>
-    </div>
-    <label for="DOW-2">Tue</label>
-  </div>
-  <div class="mdc-form-field">
-    <div class="mdc-checkbox">
-      <input type="checkbox" class="mdc-checkbox__native-control" id="DOW-3" value="3">
-      <div class="mdc-checkbox__background">
-        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-        </svg>
-        <div class="mdc-checkbox__mixedmark"></div>
-      </div>
-    </div>
-    <label for="DOW-3">Wed</label>
-  </div>
-  <div class="mdc-form-field">
-    <div class="mdc-checkbox">
-      <input type="checkbox" class="mdc-checkbox__native-control" id="DOW-4" value="4">
-      <div class="mdc-checkbox__background">
-        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-        </svg>
-        <div class="mdc-checkbox__mixedmark"></div>
-      </div>
-    </div>
-    <label for="DOW-4">Thur</label>
-  </div>
-  <div class="mdc-form-field">
-    <div class="mdc-checkbox">
-      <input type="checkbox" class="mdc-checkbox__native-control" id="DOW-5" value="5">
-      <div class="mdc-checkbox__background">
-        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-        </svg>
-        <div class="mdc-checkbox__mixedmark"></div>
-      </div>
-    </div>
-    <label for="DOW-5">Fri</label>
-  </div>
-  <div class="mdc-form-field">
-    <div class="mdc-checkbox">
-      <input type="checkbox" class="mdc-checkbox__native-control" id="DOW-6" value="6">
-      <div class="mdc-checkbox__background">
-        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-        </svg>
-        <div class="mdc-checkbox__mixedmark"></div>
-      </div>
-    </div>
-    <label for="DOW-6">Sat</label>
-  </div>
-</div>
-
-<label for="dfltStart">Default Class Start Time</label>
-<input type="time" id="dfltStart" name="startTime">&nbsp &nbsp
-<label for="dfltEnd">Default Class End Time</label>
-<input type="time" name="endTime" id="dfltEnd">
-<br>
-<button type="button" id="MakeMeets">Fill out meeting times</button>
-<br>
-<label class="form-title">Meeting Dates</label>
-<div id="MeetingTimes-div"></div>
-<div class="input-helper">
-  <i>Please be sure to reserve time in class for students to complete your course evaluations during the last week of class. Please inform Maryann Wu (maryann@usc.edu), Director of Assessment, of all instructors who should be evaluated in your course.</i></div>
-
 
 <script>
     bootup();

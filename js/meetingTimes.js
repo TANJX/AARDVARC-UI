@@ -39,7 +39,6 @@ function bootup() {
                 $("#CourseTitle").text("Invalid Course Code");
                 return;
             }
-            $("#Panel").show();
             var decoded = JSON.parse(ball);
             var courseInfo = decoded.CourseInfo;
             var DOW = "NNNNNNN";
@@ -67,7 +66,6 @@ function bootup() {
             getHolidays(semInfo);
             applyEventData(eventInfo);
             makeInstructorList();
-            getFooter();
 
         }
     });
@@ -102,12 +100,6 @@ function getHolidays(sem) {
             }
         }
     });
-    /**
-     for (var i = 0; i < 12; i++){
-        holidays[i] = {};
-    }
-     holidays[6][4] = "July 4";
-     **/
 }
 
 function deleteInstructorLine(avoid) {
@@ -178,22 +170,6 @@ function getDOW() {
         }
     });
     return useDOW;
-}
-
-function openNewTab(myUrl, myData) {
-    var res = null;
-    $.ajax({
-        'async': false,
-        'type': "POST",
-        'dataType': 'html',
-        'url': myUrl,
-        'data': myData,
-        'success': function (data) {
-            res = data;
-        }
-    });
-    var w = window.open();
-    $(w.document.body).html(res);
 }
 
 function sendToServer() {
@@ -342,7 +318,7 @@ function findPrexistingMeetingTimes(seek) {
 
 function addMeetingTimes() {
     var useDOW = [];
-    $('#DOW:checked').map(function () {
+    $('.DOW:checked').map(function () {
         useDOW.push($(this).val());
     });
     newMeetingTimes = [];
@@ -383,21 +359,26 @@ function meetTimeSanity(m) {
 }
 
 function makeTimeElements(m) {
-    var $ret = $("<div></div>");
-    $ret.append(' Start:');
+    var $ret = $("<div class='form-section grid-2'></div>");
+
+    var $ret1 = $("<div class='half left'></div>");
+    $ret1.append('<label for="startDate" class="m-t-10px">Class Starts:</label>');
     var $start = $("<input type='time' value=" + meetingTimes[m].startTime + ">");
     $start.change(function () {
         meetingTimes[m].startTime = this.value;
     });
-    $ret.append($start);
+    $ret1.append($start);
 
-    $ret.append(' End:');
+    var $ret2 = $("<div class='half right'></div>");
+    $ret2.append('<span></span>');
+    $ret2.append('<label for="startDate" class="m-t-10px">Class Ends:</label>');
     var $end = $("<input type='time' value=" + meetingTimes[m].endTime + ">");
     $end.change(function () {
         meetingTimes[m].endTime = this.value;
     });
-    $ret.append($end);
-
+    $ret2.append($end);
+    $ret.append($ret1);
+    $ret.append($ret2);
     if (Modernizr.inputtypes.time) {
         $start.blur(function () {
             meetTimeSanity(meetingTimes[m]);
@@ -416,7 +397,10 @@ function makeTimeElements(m) {
 }
 
 function makeLectureTitle(m) {
-    var $ret = $("<b>Title:</b><input type='text' size='60' value='" + meetingTimes[m].description + "'>");
+    var $ret = $("<div class='form-section full'>" +
+        "<label class='m-t-10px'>Title:</label>" +
+        "<input type='text' value='" + meetingTimes[m].description + "'>" +
+        "</div>");
     $ret.change(function () {
         meetingTimes[m].description = this.value;
     });
@@ -424,7 +408,13 @@ function makeLectureTitle(m) {
 }
 
 function makeLectureInfo(m) {
-    var $ret = $("<small><i>Enter additonal course information: Reading, Objectives, Assignments for this lecture or due later:<br></i></small><textarea rows='4' cols='100'>" + meetingTimes[m].information + "</textarea>");
+    var $ret = $("<div class='form-section'>" +
+        "<label>Additional course information:</label>" +
+        "<textarea rows='4' class='m-t-10px'>" + meetingTimes[m].information + "</textarea>" +
+        "<div class='input-helper'>" +
+        "<i>Reading, Objectives, Assignments for this lecture or due later...</i>" +
+        "</div>" +
+        "</div>");
     $ret.change(function () {
         meetingTimes[m].information = this.value;
     });
@@ -432,6 +422,8 @@ function makeLectureInfo(m) {
 }
 
 function makeTypeSelector(m) {
+    var $div = $("<div class='half left'></div>");
+    $div.append("<label class='m-t-10px'>Lecture Type: </label>");
     var $newdivDropdown = $("<select></select><br>");
     for (var i in eventTypes) {
         et = eventTypes[i];
@@ -444,19 +436,8 @@ function makeTypeSelector(m) {
     $newdivDropdown.change(function () {
         meetingTimes[m].type = this.value;
     });
-    return $newdivDropdown;
-}
-
-function getGetVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split("=");
-        if (pair[0] == variable) {
-            return pair[1];
-        }
-    }
-    return null;
+    $div.append($newdivDropdown);
+    return $div;
 }
 
 function getDayString(date) {
@@ -486,15 +467,16 @@ function getWarningString(date) {
 }
 
 function makeDateSelector(m) {
-    var $ret = $("<div></div>")
+    var $ret = $("<div class='form-section grid-2'></div>")
+    var $ret0 = $("<div class='half left' style='position: relative'></div>")
     var $delete = $("<image src='../Resources/X.png' alt ='Remove Event' >");
-    var $label = $("<b></b>");
-    var $space = $("<span>&nbsp&nbsp</span>");
-    var $warn = $("<b class = 'holiday'></b>");
+    var $label = $("<label class='m-t-10px bold'></label>");
+    var $warn = $("<b class = 'holiday' style='position: absolute; right: -100px;  top: 10px  '></b>");
     $label.text(getDayString(meetingTimes[m].date));
     $warn.text(getWarningString(meetingTimes[m].date)[1]);
-    $ret.append($delete);
-    $ret.append($label);
+    // $ret0.append($delete);
+    $ret0.append($label);
+
     if (Modernizr.inputtypes.date) {
         var $widget = $("<input type='date' id='meetDate'>");
     } else {
@@ -528,15 +510,17 @@ function makeDateSelector(m) {
         meetingTimes = newMT;
         dispMeetingTimes();
     });
-    $ret.append($widget);
-    $ret.append($space);
-    $ret.append($warn);
+    $ret0.append($widget);
+    $ret0.append($warn);
+    $ret.append($ret0);
     return $ret;
 }
 
 function makeAddObject(m) {
     var $ret = $("<div></div>");
-    var $clicky = $("<image src='../Resources/Add.png' alt ='Add Meet Time' >");
+    var $clicky = $("<button type='button' class='mdc-icon-button material-icons'>" +
+        "<i class='material-icons'>add</i>" +
+        "</button>");
     $clicky.click(function () {
         //alert("I\nSir\nDo Exist\n"+m);
         var newMT = [];
@@ -559,29 +543,31 @@ function makeAddObject(m) {
     $ret.append($clicky);
     var $save = $("<button type='button' id='SendToServer'>Save</button>");
     $save.click(sendToServer);
-    $ret.append($save);
+    // $ret.append($save);
     return $ret;
 }
 
 function dispMeetingTimes() {
     var mText = "";
     var $mtDiv = $("#MeetingTimes-div");
-    $mtDiv.html("<div id='MeetingTimes'></div>");
+    $mtDiv.html("");
     for (var i in meetingTimes) {
+        var $sub = $("<div class='form-section'></div>");
         var meet = meetingTimes[i];
-        $mtDiv.append(makeAddObject(i));
-        $mtDiv.append("<br>");
-        //"+meet.instructor.Initials+"<br>"
-        $mtDiv.append(makeDateSelector(i));
-        $mtDiv.append(makeTimeElements(i));
-        $mtDiv.append(makeInstructorEventSelection(i));
-        $mtDiv.append(makeLectureTitle(i));
-        $mtDiv.append("<br>");
-        $mtDiv.append(makeTypeSelector(i));
-        $mtDiv.append(makeLectureInfo(i));
-        $mtDiv.append("<br><br>");
+        $sub.append(makeAddObject(i));
+        $sub.append(makeDateSelector(i));
+        $sub.append(makeTimeElements(i));
+        $sub.append(makeLectureTitle(i));
+        var $sub_div = $("<div class='form-section grid-2'></div>");
+        $sub_div.append(makeTypeSelector(i));
+        $sub_div.append(makeInstructorEventSelection(i));
+        $sub.append($sub_div);
+        $sub.append(makeLectureInfo(i));
+        $sub.append("<hr style='margin-top: 50px'>");
+        $mtDiv.append($sub);
     }
     $mtDiv.append(makeAddObject(meetingTimes.length));
+    updateField('#MeetingTimes-div');
 }
 
 function convertWickedPickerFormat(sel) {

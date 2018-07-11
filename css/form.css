@@ -101,8 +101,61 @@ ol {
   text-align: right;
   margin-top: 15px;
 }
+
 .grade-entry input {
   display: inline;
 }
+
 .grade-entry-add {
 }
+
+.section {
+  margin-top: 50px;
+}
+
+.form-section {
+  margin-top: 20px;
+}
+
+.grid-7 {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /*grid-column-gap: 1em;*/
+}
+
+.full {
+  display: grid;
+  grid-template-columns: 15% 85%;
+}
+
+.full input[type="text"] {
+  display: inline;
+  width: 100%;
+}
+
+.half {
+  display: grid;
+}
+
+.left {
+  grid-template-columns: 30% 50% 20%;
+}
+
+.right {
+  grid-template-columns: 20% 30% 50%;
+}
+
+.m-t-10px {
+  margin-top: 10px;
+}
+
+.half input[type="date"], .half input[type="time"] {
+  display: inline;
+  width: auto;
+}
+

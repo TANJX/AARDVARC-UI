@@ -131,6 +131,7 @@
 
     function save() {
         console.log("saving");
+        changed = false;
     }
 
     window.onbeforeunload = function () {

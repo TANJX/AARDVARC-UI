@@ -291,13 +291,14 @@ function safeInitials(v) {
 }
 
 function makeInstructorEventSelection(m) {
-    var $ret = $("<div></div>");
+    var $ret = $("<div class='half right'></div>");
+    $ret.append("<span></span>");
+    $ret.append("<label class='m-t-10px'>Lecturer:</label>");
     var meetObj = meetingTimes[m];
     var meetIns = meetObj.instructor;
     for (var i = 0; i < meetIns.length; i++) {
         var $newdivDropdown = makeInstructorDropdown(m, i);
         $ret.append($newdivDropdown);
-        $ret.append("<br>");
     }
     return $ret;
 }
