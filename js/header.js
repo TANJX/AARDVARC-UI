@@ -21,7 +21,11 @@ var snackbar_element = null;
 var snackbar_complete = true;
 var snackbar_timeout_function;
 
-function prompt(msg) {
+function warn(msg) {
+    prompt(msg, 5000, '#fa4f2f');
+}
+
+function prompt(msg, time, color) {
     $p = $('<div class="mdc-snackbar mdc-snackbar--align-start"' +
         ' aria-live="assertive"' +
         ' aria-atomic="true"' +
@@ -32,6 +36,12 @@ function prompt(msg) {
         '</div>' +
         '</div>');
     $('body').append($p);
+    if (typeof color !== "undefined") {
+        $p.css('backgroundColor', color);
+    }
+    if (typeof time === "undefined") {
+        time = 2750;
+    }
     if (!snackbar_complete) {
         clearTimeout(snackbar_timeout_function);
     }
@@ -41,12 +51,13 @@ function prompt(msg) {
     setTimeout(function () {
         snackbar.show({
             message: msg,
+            timeout: time
         });
     }, 100);
     snackbar_timeout_function = setTimeout(function () {
         snackbar_element.remove();
         snackbar_complete = true;
-    }, 3100);
+    }, time + 300);
 }
 
 function getHeader() {

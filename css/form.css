@@ -11,10 +11,14 @@ input, textarea {
   padding: .375rem .75rem 6px 12px;
 }
 
-input:focus, textarea:focus {
+input:not(.mdc-text-field__input):focus, textarea:focus {
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+input:not(.mdc-text-field__input):disabled {
+  background-color: #e9e9e9;
 }
 
 .form-group {
@@ -167,6 +171,7 @@ table th {
 table td {
   color: #4C4C4C;
   height: 50px;
+  font-size: 0.95rem;
 }
 
 table td, table th {

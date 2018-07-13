@@ -5,7 +5,7 @@ function createRecord(i) {
     var lecID = tableData[i].LecturerID;
     var payType = getRadioValue(payTag);
     if (payType == null) {
-        alert("Please select if payment is default rate");
+        warn("Please select if payment is default rate");
         return;
     }
     var ball = {"AccessCode": headerClassData.AccessCode, "LecturerID": lecID, "Mode": "INSERT", "DefaultPay": payType};
@@ -17,7 +17,7 @@ function createRecord(i) {
         'data': ball,
         'success': function (data) {
             if (data.substring(0, 7) == "SUCCESS") {
-                alert("Data successfully sent to database 1");
+                prompt("Success!")
                 tableData[i].HasForm = true;
                 tableData[i].DefaultPay = payType;
                 $("#RowStatus" + i).html(formStatus(i));
@@ -44,12 +44,11 @@ function getRadioValue(id) {
 function editForm(i) {
     var row = tableData[i];
     var lecIdGetParam = "&Instructor=" + row.LecturerID;
-    goPage("LimitedEngagementForm", lecIdGetParam);
+    window.location = "LimitedEngagementForm.html?ClassCode=" + classCode + lecIdGetParam;
 }
 
 function formStatus(i) {
     var row = tableData[i];
-    //alert(JSON.stringify(row));
     if (row.Submitted == "Yes") return "Submitted";
     if (row.HasForm) {
         //return '<button type="button" id="createRecordButton" onClick="goPage("LimitedEngagementForm",'+lecIdGetParam+');">Edit</button>';
@@ -100,7 +99,6 @@ function getDefaultPaymentCell(i) {
             '</div>' +
             '<label for="payType' + i + '-N">Custom</label>' +
             '</div>');
-        //alert($ret.html());
         return $ret.html();
         //return "selection not yet implemented";
     }
@@ -125,10 +123,10 @@ function generateTable() {
         '<th>Last</th>' +
         '<th>First</th>' +
         '<th>Status</th>' +
-        '<th>Form</th>' +
+        '<th class="center">Form</th>' +
         '<th>Payment</th>' +
         '<th>View</th>' +
-        '<th>CV</th>' +
+        '<th class="right">CV</th>' +
         '</tr></table>');
     for (var i in tableData) {
         var row = tableData[i];
@@ -136,10 +134,10 @@ function generateTable() {
             '<td>' + row.LastName + '</td>' +
             '<td>' + row.FirstName + '</td>' +
             '<td>' + row.Status + '</td>' +
-            '<td id="RowStatus' + i + '">' + formStatus(i) + '</td>' +
+            '<td class="center" id="RowStatus' + i + '">' + formStatus(i) + '</td>' +
             '<td>' + getDefaultPaymentCell(i) + '</td>' +
             '<td>' + getViewFileCell(i) + '</td>' +
-            '<td>' + getCVCell(i) + '</td>' +
+            '<td style="font-size: 0.75rem">' + getCVCell(i) + '</td>' +
             '</tr>');
     }
     $('#TableSpan').append($table);
@@ -153,7 +151,6 @@ function getRecordsData() {
         'url': "../Server/IdentifyLimitedEngagementLecturers.php",
         'data': {"AccessCode": headerClassData.AccessCode},
         'success': function (ball) {
-            //alert(ball);
             var jason = JSON.parse(ball);
             tableData = jason;
             if (jason.length == 0) $("#NoLENeeded").show();

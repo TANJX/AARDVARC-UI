@@ -1,4 +1,4 @@
-* {
+*:not(input) {
   box-sizing: border-box;
 }
 
@@ -82,6 +82,7 @@ footer p {
 :root {
   --mdc-theme-primary: #980001;
   --mdc-theme-secondary: #ffcb03;
+  --mdc-theme-text-hint-on-light: #980001;
 }
 
 #menu-links a.mdc-list-item {
@@ -93,3 +94,6 @@ footer p {
   color: #111;
 }
 
+.main .mdc-text-field--focused:not(mdc-text-field--disabled) .mdc-floating-label {
+  color: #980001;
+}
