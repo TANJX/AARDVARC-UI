@@ -18,8 +18,52 @@
   margin: 14px 0 0 30px;
 }
 
-.mdc-list {
-  margin-top: 20px;
+.banner-title {
+  background-color: #ffcb03;
+  height: 40px;
+}
+
+.banner-title h4 {
+  margin: 0;
+  padding: 10px 0 0 30px;
+  font-weight: 500;
+  color: #111;
+  font-size: 1.25rem;
+}
+
+.banner-title h4 span {
+  font-weight: lighter;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.left-col {
+  padding-top: 120px;
+  position: fixed;
+  height: 100%;
+  width: 280px;
+  background-color: #f2f2f2;
+  overflow: auto;
+}
+
+.left-col .subtitle {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.left-control {
+  position: absolute;
+  bottom: 10px;
+  left: 1.25rem;
+}
+
+.left-control button {
+  margin: 10px 0;
+}
+
+.course-info p {
+  margin: 0;
+  font-weight: bold;
 }
 
 a.mdc-list-item {
@@ -55,7 +99,8 @@ footer p {
 }
 
 .main {
-  padding: 80px 0 60px;
+  padding: 100px 0 60px;
+  margin-left: 280px;
 }
 
 .main-wrapper {
@@ -66,15 +111,23 @@ footer p {
 
 .main-wrapper .title {
   font-weight: 400;
-  margin-top: 10px;
-}
-
-.main-wrapper .subtitle {
-  color: #333;
 }
 
 #main-form {
   margin: 20px 0;
+}
+
+hr {
+  border-color: #f4f4f4;
+  border-width: 1px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
 }
 
 /* color */
@@ -93,3 +146,8 @@ footer p {
   color: #111;
 }
 
+#menu-links a.mdc-list-item.active {
+  color: white;
+  background-color: #eab50a;
+  border-color: #ffcb03;
+}

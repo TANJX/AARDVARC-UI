@@ -3,6 +3,7 @@ var headerClassData = null;
 var hostName = window.location.hostname;
 var isAGradClass = false;
 var changed = false;
+var invalid = false;
 
 function getGetVariable(variable) {
     var query = window.location.search.substring(1);
@@ -16,6 +17,38 @@ function getGetVariable(variable) {
     return null;
 }
 
+var snackbar_element = null;
+var snackbar_complete = true;
+var snackbar_timeout_function;
+
+function prompt(msg) {
+    $p = $('<div class="mdc-snackbar mdc-snackbar--align-start"' +
+        ' aria-live="assertive"' +
+        ' aria-atomic="true"' +
+        ' aria-hidden="true">' +
+        '<div class="mdc-snackbar__text"></div>' +
+        '<div class="mdc-snackbar__action-wrapper">' +
+        '<button type="button" class="mdc-snackbar__action-button"></button>' +
+        '</div>' +
+        '</div>');
+    $('body').append($p);
+    if (!snackbar_complete) {
+        clearTimeout(snackbar_timeout_function);
+    }
+    snackbar_element = $p;
+    snackbar_complete = false;
+    let snackbar = new mdc.snackbar.MDCSnackbar($p[0]);
+    setTimeout(function () {
+        snackbar.show({
+            message: msg,
+        });
+    }, 100);
+    snackbar_timeout_function = setTimeout(function () {
+        snackbar_element.remove();
+        snackbar_complete = true;
+    }, 3100);
+}
+
 function getHeader() {
     $.ajax({
         'async': false,
@@ -25,9 +58,9 @@ function getHeader() {
         'data': {"AccessCode": classCode},
         'success': function (ball) {
             if ((ball.substring(0, 7) == "NOCODE") || (ball.substring(0, 7) == "BADCODE")) {
-                $("#CourseTitle").text("Invalid Course Code");
+                $("#CourseTitle").text("( Invalid Course Code");
+                invalid = true;
             } else {
-                $("#Entry").show();
                 var jason = JSON.parse(ball);
                 var sinfo = jason.SemesterInfo;
                 var cinfo = jason.CourseInfo;
@@ -60,11 +93,11 @@ function updateField(div) {
     if (typeof div === "undefined") {
         div = ' ';
     }
-    $(div + ' .ripple').each(function () {
+    $('.main-wrapper .ripple').each(function () {
         mdc.ripple.MDCRipple.attachTo($(this)[0]);
     });
 
-    $(div + '.main-wrapper .mdc-icon-button').each(function () {
+    $('.main-wrapper .mdc-icon-button').each(function () {
         const iconButtonRipple = new mdc.ripple.MDCRipple($(this)[0]);
         iconButtonRipple.unbounded = true;
     });
@@ -85,7 +118,6 @@ function updateField(div) {
             e = $(this).children(".mdc-radio");
             if (typeof e[0] !== "undefined") {
                 formField.input = new mdc.radio.MDCRadio(e[0]);
-                console.log(e[0]);
             }
         }
 

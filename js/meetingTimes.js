@@ -173,6 +173,7 @@ function getDOW() {
 }
 
 function sendToServer() {
+    console.log('saving meetingTimes');
     for (var i in meetingTimes) {
         var m = meetingTimes[i];
         if (m.date == null) {
@@ -217,6 +218,7 @@ function sendToServer() {
             IrregularTimes: getRadioValue("IrregularTimes"),
             meetingTimes: mtBall
         };
+    console.log(ball);
     //alert(JSON.stringify(meetingTimes));
     $.ajax({
         'async': false,
@@ -226,7 +228,7 @@ function sendToServer() {
         'data': ball,
         'success': function (data) {
             if (data.substring(0, 7) == "SUCCESS") {
-                alert("Data successfully sent to database");
+                prompt("Meeting Times Saved!");
             } else {
                 var w = window.open();
                 $(w.document.body).html(data);
@@ -397,34 +399,35 @@ function makeTimeElements(m) {
 }
 
 function makeLectureTitle(m) {
-    var $ret = $("<div class='form-section full'>" +
-        "<label class='m-t-10px'>Title:</label>" +
-        "<input type='text' value='" + meetingTimes[m].description + "'>" +
-        "</div>");
-    $ret.change(function () {
+    var $ret = $("<div class='form-section full'></div>");
+    $ret.append("<label class='m-t-10px'>Title:</label>");
+    var $input = $("<input type='text' value='" + meetingTimes[m].description + "'>");
+    $input.change(function () {
         meetingTimes[m].description = this.value;
     });
+    $ret.append($input);
     return $ret;
 }
 
 function makeLectureInfo(m) {
-    var $ret = $("<div class='form-section'>" +
-        "<label>Additional course information:</label>" +
-        "<textarea rows='4' class='m-t-10px'>" + meetingTimes[m].information + "</textarea>" +
-        "<div class='input-helper'>" +
-        "<i>Reading, Objectives, Assignments for this lecture or due later...</i>" +
-        "</div>" +
-        "</div>");
-    $ret.change(function () {
+    var $ret = $("<div class='form-section'></div>");
+    $ret.append("<label>Additional course information:</label>");
+    var $textarea = $("<textarea rows='4' class='m-t-10px'>" + meetingTimes[m].information + "</textarea>");
+    $textarea.change(function () {
         meetingTimes[m].information = this.value;
     });
+    $ret.append($textarea);
+    $ret.append("<div class='input-helper'>" +
+        "<i>Reading, Objectives, Assignments for this lecture or due later...</i>" +
+        "</div>");
     return $ret;
 }
 
 function makeTypeSelector(m) {
+    var $grid = $('<div class="form-section grid-2"></div>')
     var $div = $("<div class='half left'></div>");
     $div.append("<label class='m-t-10px'>Lecture Type: </label>");
-    var $newdivDropdown = $("<select></select><br>");
+    var $newdivDropdown = $("<select></select>");
     for (var i in eventTypes) {
         et = eventTypes[i];
         $newdivDropdown.append($('<option>', {
@@ -437,7 +440,8 @@ function makeTypeSelector(m) {
         meetingTimes[m].type = this.value;
     });
     $div.append($newdivDropdown);
-    return $div;
+    $grid.append($div);
+    return $grid;
 }
 
 function getDayString(date) {
@@ -469,12 +473,14 @@ function getWarningString(date) {
 function makeDateSelector(m) {
     var $ret = $("<div class='form-section grid-2'></div>")
     var $ret0 = $("<div class='half left' style='position: relative'></div>")
-    var $delete = $("<image src='../Resources/X.png' alt ='Remove Event' >");
+    var $delete = $("<button type='button' class='mdc-icon-button material-icons delete-btn' " +
+        "style='margin-left: 5px;'>" +
+        "<i class='material-icons'>delete</i>" +
+        "</button>");
     var $label = $("<label class='m-t-10px bold'></label>");
-    var $warn = $("<b class = 'holiday' style='position: absolute; right: -100px;  top: 10px  '></b>");
+    var $warn = $("<b class = 'holiday' style='position: absolute; right: -120px;  top: 15px  '></b>");
     $label.text(getDayString(meetingTimes[m].date));
     $warn.text(getWarningString(meetingTimes[m].date)[1]);
-    // $ret0.append($delete);
     $ret0.append($label);
 
     if (Modernizr.inputtypes.date) {
@@ -511,6 +517,7 @@ function makeDateSelector(m) {
         dispMeetingTimes();
     });
     $ret0.append($widget);
+    $ret0.append($delete);
     $ret0.append($warn);
     $ret.append($ret0);
     return $ret;
@@ -541,8 +548,8 @@ function makeAddObject(m) {
         window.scrollBy(0, 115);
     });
     $ret.append($clicky);
-    var $save = $("<button type='button' id='SendToServer'>Save</button>");
-    $save.click(sendToServer);
+    // var $save = $("<button type='button' id='SendToServer'>Save</button>");
+    // $save.click(sendToServer());
     // $ret.append($save);
     return $ret;
 }
@@ -558,10 +565,8 @@ function dispMeetingTimes() {
         $sub.append(makeDateSelector(i));
         $sub.append(makeTimeElements(i));
         $sub.append(makeLectureTitle(i));
-        var $sub_div = $("<div class='form-section grid-2'></div>");
-        $sub_div.append(makeTypeSelector(i));
-        $sub_div.append(makeInstructorEventSelection(i));
-        $sub.append($sub_div);
+        $sub.append(makeTypeSelector(i));
+        $sub.append(makeInstructorEventSelection(i));
         $sub.append(makeLectureInfo(i));
         $sub.append("<hr style='margin-top: 50px'>");
         $mtDiv.append($sub);

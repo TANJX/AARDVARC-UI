@@ -135,7 +135,8 @@ function openNewTab(myUrl, myData) {
 }
 
 function sendToServer() {
-    //var classCode = getGetVariable("ClassCode");
+    console.log("saving Instructors");
+    var classCode = getGetVariable("ClassCode");
     var instrKeys = [];
     for (var i in instructors) {
         var e = instructors[i];
@@ -151,7 +152,6 @@ function sendToServer() {
             code: classCode,
             allInstructors: instrKeys
         };
-    //alert(JSON.stringify(meetingTimes));
     $.ajax({
         'async': false,
         'type': "POST",
@@ -160,7 +160,7 @@ function sendToServer() {
         'data': ball,
         'success': function (data) {
             if (data.substring(0, 7) == "SUCCESS") {
-                alert("Data successfully sent to database");
+                prompt("Instructors Saved!");
             } else {
                 var w = window.open();
                 $(w.document.body).html(data);
@@ -291,16 +291,19 @@ function safeInitials(v) {
 }
 
 function makeInstructorEventSelection(m) {
-    var $ret = $("<div class='half right'></div>");
-    $ret.append("<span></span>");
+    var $div = $("<div class='form-section grid-2'></div>");
+    var $ret = $("<div class='half left'></div>");
     $ret.append("<label class='m-t-10px'>Lecturer:</label>");
+    var $right = $("<div></div>");
     var meetObj = meetingTimes[m];
     var meetIns = meetObj.instructor;
     for (var i = 0; i < meetIns.length; i++) {
         var $newdivDropdown = makeInstructorDropdown(m, i);
-        $ret.append($newdivDropdown);
+        $right.append($newdivDropdown);
     }
-    return $ret;
+    $ret.append($right);
+    $div.append($ret);
+    return $div;
 }
 
 function makeInstructorDropdown(m, j) {

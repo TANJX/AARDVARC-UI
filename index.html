@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AARDVARC-MATERIAL</title>
+  <link rel="stylesheet" href="lib/normalize.css">
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/form.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <script src="lib/jquery-3.3.1.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <script src="js/header.js"></script>
+</head>
+
+<body>
+<div class="banner">
+  <div class="banner-logo">
+    <img src="img/pharmacy-title.svg">
+  </div>
+</div>
+
+
+<div class="main">
+  <div class="main-wrapper">
+    <p><i class='material-icons' style="font-size: 60px">class</i></p>
+    <h1 class="mdc-typography--headline2 title">Course Editor</h1>
+    <h1 class="mdc-typography--headline4 subtitle"><span id="SemesterTitle"></span>: <span id="CourseTitle"></span></h1>
+    <h2>Guides</h2>
+    <div>
+      <a href='http://pharmacysyllabus.usc.edu/Demo/Document/Resources/AARDVARC_Instructions_v3.docx' target="_blank">
+        Click here</a> to download General Instructions for generation of the syllabus.<br>
+
+      <a href='http://pharmacysyllabus.usc.edu/Demo/Document/Resources/Fall2018_PharmD_Schedule_June7.pdf'
+         target="_blank" download>Click here</a> to download PharmD Schedule for Fall 2018<br>
+
+      <a href='http://pharmacysyllabus.usc.edu/Demo/Document/Resources/Fall2018_PhDMS_Schedule_June7.pdf'
+         target="_blank" download>Click here</a> to download PhD/MS Schedule for Fall 2018<br><br>
+    </div>
+    <h2>Sections</h2>
+    <div class="mdc-list" id="menu-links">
+      <a class="mdc-list-item ripple" id="CourseBasics">Course Information</a>
+      <a class="mdc-list-item ripple" id="Instructors">Course Instructors</a>
+      <a class="mdc-list-item ripple" id="ProgramOutcomes">Program Outcomes</a>
+      <a class="mdc-list-item ripple" id="LearningObjectives">Learning Objectives &amp; Readings</a>
+      <a class="mdc-list-item ripple" id="Methods">Teaching &amp; Assessment Methods</a>
+      <a class="mdc-list-item ripple" id="Grading">Grading Breakdown</a>
+      <a class="mdc-list-item ripple" id="ExamReturn">Exam Return Policy</a>
+      <a class="mdc-list-item ripple" id="MeetingTimes">Event Schedule</a>
+      <a class="mdc-list-item ripple" id="Evals">Lecturers to Receive USC Course Evaluation</a>
+      <a class="mdc-list-item ripple" id="LimitedEngagementByClass">Limited Engagement Faculty Forms</a>
+    </div>
+
+    <h2>Export</h2>
+    <button href="#" class="mdc-button ripple" id="MakeDocument">Generate Syllabus Documents</button>
+
+    <footer>
+      <img src="img/logo-red.svg" alt="AARDVARC logo" class="logo">
+      <p>USC AARDVARC ©</p>
+      <p>Syllabus Generator</p>
+      <p>Version: 2.0</p>
+      <p>Date: July 13, 2018</p>
+      <p>Author: Dab Brill, Mukesh Poptani, Mars Tan</p>
+    </footer>
+  </div>
+</div>
+
+<script>
+    var classCode = getGetVariable("ClassCode");
+    getHeader();
+
+    $("#menu-links a").click(function () {
+        if (!invalid) {
+            window.location = "page.html?page=" + $(this).attr('id') + "&ClassCode=" + classCode;
+        }
+    });
+
+
+    $('#menu-links .ripple').each(function () {
+        mdc.ripple.MDCRipple.attachTo($(this)[0]);
+    });
+
+    if (isAGradClass) {
+        $("#ProgramOutcomes").hide();
+    }
+
+</script>
+</body>
+
+</html>

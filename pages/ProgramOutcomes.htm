@@ -4,10 +4,15 @@
 
 <script src="js/checkbox.js"></script>
 <script>
-    function bootup(){
+    function sendToServer() {
+        send('Program Outcome');
+    }
+
+    function bootup() {
         getList("ProgramOutcomes.json");
         initializeValues();
         getExistingValues("Program Outcome");
     }
+
     bootup();
 </script>

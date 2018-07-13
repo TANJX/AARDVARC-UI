@@ -4,6 +4,7 @@ var sections;
 var sendDataToURL = "../Server/RecordCheckbox.php";
 
 function send(boxType) {
+    console.log("saving " + boxType);
     var CRball = [];
     for (var i in custom) {
         var c = custom[i];
@@ -28,7 +29,7 @@ function send(boxType) {
         'data': ball,
         'success': function (data) {
             if (data.substring(0, 7) == "SUCCESS") {
-                alert("Data successfully sent to database");
+                prompt(boxType + " Saved!");
             } else {
                 var w = window.open();
                 $(w.document.body).html(data);

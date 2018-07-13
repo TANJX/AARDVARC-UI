@@ -100,7 +100,8 @@ function dispAssignments() {
     updateField();
 }
 
-function send() {
+function sendToServer() {
+    console.log("saving grading");
     if (getTotal() < 100.0) {
         alert("Warning: Less than 100% credit has been entered");
     }
@@ -116,7 +117,7 @@ function send() {
         'data': ball,
         'success': function (data) {
             if (data.substring(0, 7) == "SUCCESS") {
-                alert("Data successfully sent to database");
+                prompt("Grading Saved!");
             } else {
                 var w = window.open();
                 $(w.document.body).html(data);

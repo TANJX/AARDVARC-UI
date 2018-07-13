@@ -3,6 +3,10 @@
 
 <script src="js/checkbox.js"></script>
 <script>
+    function sendToServer() {
+        send('LearningObjectives');
+    }
+
     var CBtype = "LearningObjectives";
     function bootup() {
         getList("LearningObjectives.json");

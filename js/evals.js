@@ -10,7 +10,6 @@ function getInstructors() {
         'success': function (ball) {
             //alert(ball);
             allIns = JSON.parse(ball);
-            console.log(allIns);
             for (var i in allIns) {
                 var ins = allIns[i];
                 ins.Hours = ins.Hours.toFixed(2);
@@ -59,7 +58,6 @@ function makeRadioButton(row) {
     var $box = $("<input type='checkbox' class='mdc-checkbox__native-control' id='shouldEval" + row + "'>");
     if (allIns[row].NeedsEval == "Yes") {
         $box.prop('checked', true);
-        console.log($box);
     }
     var $line = $("<div class='option'></div>");
     var $form_field = $("<div class='mdc-form-field'></div>");
@@ -79,6 +77,7 @@ function makeRadioButton(row) {
 }
 
 function sendToServer() {
+    console.log("saving Evals");
     var insStatus = [];
     for (var i in allIns) {
         var ins = allIns[i];
@@ -94,7 +93,7 @@ function sendToServer() {
         'data': ball,
         'success': function (data) {
             if (data.substring(0, 7) == "SUCCESS") {
-                alert("Data successfully sent to database");
+                prompt("Lecturers to Receive USC Course Evaluation Saved!");
             } else {
                 var w = window.open();
                 $(w.document.body).html(data);
