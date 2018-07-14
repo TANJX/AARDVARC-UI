@@ -36,192 +36,199 @@
     <h1 class="mdc-typography--headline3 title">Limited Engagement Form</h1>
     <h1 class="mdc-typography--headline5 subtitle"><span id="SemesterTitle"></span>: <span id="CourseTitle"></span></h1>
 
+    <div id="Entry">
+      <h3 class="form-title">Individual Information</h3>
 
-    <h3 class="form-title">Individual Information</h3>
-
-    <div class="form-section name-form">
-      <div class="mdc-text-field">
-        <input type="text" id="lastName" class="mdc-text-field__input">
-        <label class="mdc-floating-label" for="lastName">Last Name</label>
-        <div class="mdc-line-ripple"></div>
-      </div>
-      <div class="mdc-text-field">
-        <input type="text" id="firstName" class="mdc-text-field__input">
-        <label class="mdc-floating-label" for="firstName">First Name</label>
-        <div class="mdc-line-ripple"></div>
-      </div>
-      <div class="mdc-text-field">
-        <input type="text" id="middleName" class="mdc-text-field__input">
-        <label class="mdc-floating-label" for="middleName">Middle Initial</label>
-        <div class="mdc-line-ripple"></div>
-      </div>
-    </div>
-
-    <div class="form-section contact-form">
-      <div class="mdc-text-field">
-        <input type="text" id="insTelephone" class="mdc-text-field__input">
-        <label class="mdc-floating-label" for="insTelephone">Telephone</label>
-        <div class="mdc-line-ripple"></div>
-      </div>
-      <div class="mdc-text-field">
-        <input type="text" id="insEmail" class="mdc-text-field__input">
-        <label class="mdc-floating-label" for="insEmail">E-mail</label>
-        <div class="mdc-line-ripple"></div>
-      </div>
-    </div>
-
-    <div class="form-section type-form">
-      <div class="mdc-form-field">
-        <div class="mdc-radio">
-          <input class="mdc-radio__native-control" type="radio" name="USCitzenship" value="citizen" id="citizen">
-          <div class="mdc-radio__background">
-            <div class="mdc-radio__outer-circle"></div>
-            <div class="mdc-radio__inner-circle"></div>
-          </div>
-        </div>
-        <label for="citizen">US Citizen</label>
-      </div>
-      <div class="mdc-form-field">
-        <div class="mdc-radio">
-          <input class="mdc-radio__native-control" type="radio" name="USCitzenship" value="resident" id="resident">
-          <div class="mdc-radio__background">
-            <div class="mdc-radio__outer-circle"></div>
-            <div class="mdc-radio__inner-circle"></div>
-          </div>
-        </div>
-        <label for="resident">Permanent Resident (Green Card)</label>
-      </div>
-      <div class="mdc-form-field">
-        <div class="mdc-radio">
-          <input class="mdc-radio__native-control" type="radio" name="USCitzenship" value="alien" id="alien">
-          <div class="mdc-radio__background">
-            <div class="mdc-radio__outer-circle"></div>
-            <div class="mdc-radio__inner-circle"></div>
-          </div>
-        </div>
-        <label for="alien">Non-resident Alien</label>
-      </div>
-    </div>
-
-
-    <div class="form-section address-form">
-      <h3 class="form-title">Address</h3>
-      <div class="">
+      <div class="form-section name-form">
         <div class="mdc-text-field">
-          <input type="text" id="address1" class="mdc-text-field__input">
-          <label class="mdc-floating-label" for="address1">Address 1</label>
+          <input type="text" id="lastName" class="mdc-text-field__input">
+          <label class="mdc-floating-label" for="lastName">Last Name</label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+        <div class="mdc-text-field">
+          <input type="text" id="firstName" class="mdc-text-field__input">
+          <label class="mdc-floating-label" for="firstName">First Name</label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+        <div class="mdc-text-field">
+          <input type="text" id="middleName" class="mdc-text-field__input">
+          <label class="mdc-floating-label" for="middleName">Middle Initial</label>
           <div class="mdc-line-ripple"></div>
         </div>
       </div>
-      <div class="">
+
+      <div class="form-section contact-form">
         <div class="mdc-text-field">
-          <input type="text" id="address2" class="mdc-text-field__input">
-          <label class="mdc-floating-label" for="address2">Address 2</label>
+          <input type="text" id="insTelephone" class="mdc-text-field__input">
+          <label class="mdc-floating-label" for="insTelephone">Telephone</label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+        <div class="mdc-text-field">
+          <input type="text" id="insEmail" class="mdc-text-field__input">
+          <label class="mdc-floating-label" for="insEmail">E-mail</label>
           <div class="mdc-line-ripple"></div>
         </div>
       </div>
-      <div class="">
-        <div class="mdc-text-field">
-          <input type="text" id="addressCityState" class="mdc-text-field__input">
-          <label class="mdc-floating-label" for="addressCityState">City/State/Zip</label>
-          <div class="mdc-line-ripple"></div>
-        </div>
-      </div>
-      <div class="">
-        <div class="mdc-text-field">
-          <input type="text" id="addressCountry" class="mdc-text-field__input">
-          <label class="mdc-floating-label" for="addressCountry">Country (if not US)</label>
-          <div class="mdc-line-ripple"></div>
-        </div>
-      </div>
-    </div>
 
-    <h3>Payment Information</h3>
-    <button class="mdc-button" type="button" id="UpdateData">Update Values From Syllabus</button>
-
-    <p>Hours: <span id="hourCount">T</span></p>
-    <div class="form-section name-form">
-      <div class="custom-text-field">
-        <input type="number" id="paymentAmount" step="0.01">
-        <label for="paymentAmount">Payment Amount</label>
-      </div>
-      <div class="custom-text-field">
-        <input type="date" id="startDate">
-        <label for="startDate">Start Date</label>
-      </div>
-      <div class="custom-text-field">
-        <input type="date" id="endDate">
-        <label for="endDate">End Date</label>
-      </div>
-    </div>
-    <p style="color: red"><span id="paymentWarning"></span></p>
-    <div id="JustificationArea" hidden>
-      <p>Please briefly justify why a custom pay scale is required:</p>
-      <textarea id='CustomJustification' rows="3" cols="100"></textarea>
-    </div>
-
-    <div class="form-section" hidden>
-      <h4 class="form-title">Payment For</h4>
-      <div class="name-form">
+      <div class="form-section type-form">
         <div class="mdc-form-field">
           <div class="mdc-radio">
-            <input class="mdc-radio__native-control" type="radio" id="payForGuestSpeaker">
+            <input class="mdc-radio__native-control" type="radio" name="USCitzenship" value="citizen" id="citizen">
             <div class="mdc-radio__background">
               <div class="mdc-radio__outer-circle"></div>
               <div class="mdc-radio__inner-circle"></div>
             </div>
           </div>
-          <label for="payForGuestSpeaker">Guest speaker/artist</label>
+          <label for="citizen">US Citizen</label>
         </div>
-
         <div class="mdc-form-field">
           <div class="mdc-radio">
-            <input class="mdc-radio__native-control" type="radio" id="payForPeerReview">
+            <input class="mdc-radio__native-control" type="radio" name="USCitzenship" value="resident" id="resident">
             <div class="mdc-radio__background">
               <div class="mdc-radio__outer-circle"></div>
               <div class="mdc-radio__inner-circle"></div>
             </div>
           </div>
-          <label for="payForPeerReview">Peer review/referee</label>
+          <label for="resident">Permanent Resident (Green Card)</label>
         </div>
-
-        <div class="mdc-text-field">
-          <input type="text" id="payForOther" class="mdc-text-field__input">
-          <label class="mdc-floating-label" for="payForOther">Other</label>
-          <div class="mdc-line-ripple"></div>
+        <div class="mdc-form-field">
+          <div class="mdc-radio">
+            <input class="mdc-radio__native-control" type="radio" name="USCitzenship" value="alien" id="alien">
+            <div class="mdc-radio__background">
+              <div class="mdc-radio__outer-circle"></div>
+              <div class="mdc-radio__inner-circle"></div>
+            </div>
+          </div>
+          <label for="alien">Non-resident Alien</label>
         </div>
       </div>
 
-      <h4 class="form-title">Service Performed:</h4>
-      <div class="name-form">
 
-        <div class="mdc-form-field">
-          <div class="mdc-radio">
-            <input class="mdc-radio__native-control" type="radio" name="payWithinCA" value="alien" id="withinCA">
-            <div class="mdc-radio__background">
-              <div class="mdc-radio__outer-circle"></div>
-              <div class="mdc-radio__inner-circle"></div>
-            </div>
+      <div class="form-section address-form">
+        <h3 class="form-title">Address</h3>
+        <div class="">
+          <div class="mdc-text-field">
+            <input type="text" id="address1" class="mdc-text-field__input">
+            <label class="mdc-floating-label" for="address1">Address 1</label>
+            <div class="mdc-line-ripple"></div>
           </div>
-          <label for="withinCA">Within California</label>
         </div>
-        <div class="mdc-form-field">
-          <div class="mdc-radio">
-            <input class="mdc-radio__native-control" type="radio" name="payWithinCA" value="alien" id="outsideCA">
-            <div class="mdc-radio__background">
-              <div class="mdc-radio__outer-circle"></div>
-              <div class="mdc-radio__inner-circle"></div>
-            </div>
+        <div class="">
+          <div class="mdc-text-field">
+            <input type="text" id="address2" class="mdc-text-field__input">
+            <label class="mdc-floating-label" for="address2">Address 2</label>
+            <div class="mdc-line-ripple"></div>
           </div>
-          <label for="outsideCA">Outside California</label>
         </div>
+        <div class="">
+          <div class="mdc-text-field">
+            <input type="text" id="addressCityState" class="mdc-text-field__input">
+            <label class="mdc-floating-label" for="addressCityState">City/State/Zip</label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+        </div>
+        <div class="">
+          <div class="mdc-text-field">
+            <input type="text" id="addressCountry" class="mdc-text-field__input">
+            <label class="mdc-floating-label" for="addressCountry">Country (if not US)</label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Payment Information</h3>
+      <button class="mdc-button" type="button" id="UpdateData">Update Values From Syllabus</button>
+
+      <p>Hours: <span id="hourCount">T</span></p>
+      <div class="form-section name-form">
+        <div class="custom-text-field">
+          <input type="number" id="paymentAmount" step="0.01">
+          <label for="paymentAmount">Payment Amount</label>
+        </div>
+        <div class="custom-text-field">
+          <input type="date" id="startDate">
+          <label for="startDate">Start Date</label>
+        </div>
+        <div class="custom-text-field">
+          <input type="date" id="endDate">
+          <label for="endDate">End Date</label>
+        </div>
+      </div>
+      <p style="color: red"><span id="paymentWarning"></span></p>
+      <div id="JustificationArea" hidden>
+        <p>Please briefly justify why a custom pay scale is required:</p>
+        <textarea id='CustomJustification' rows="3" cols="100"></textarea>
+      </div>
+
+      <div class="form-section" hidden>
+        <h4 class="form-title">Payment For</h4>
+        <div class="name-form">
+          <div class="mdc-form-field">
+            <div class="mdc-radio">
+              <input class="mdc-radio__native-control" type="radio" id="payForGuestSpeaker">
+              <div class="mdc-radio__background">
+                <div class="mdc-radio__outer-circle"></div>
+                <div class="mdc-radio__inner-circle"></div>
+              </div>
+            </div>
+            <label for="payForGuestSpeaker">Guest speaker/artist</label>
+          </div>
+
+          <div class="mdc-form-field">
+            <div class="mdc-radio">
+              <input class="mdc-radio__native-control" type="radio" id="payForPeerReview">
+              <div class="mdc-radio__background">
+                <div class="mdc-radio__outer-circle"></div>
+                <div class="mdc-radio__inner-circle"></div>
+              </div>
+            </div>
+            <label for="payForPeerReview">Peer review/referee</label>
+          </div>
+
+          <div class="mdc-text-field">
+            <input type="text" id="payForOther" class="mdc-text-field__input">
+            <label class="mdc-floating-label" for="payForOther">Other</label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+        </div>
+
+        <h4 class="form-title">Service Performed:</h4>
+        <div class="name-form">
+
+          <div class="mdc-form-field">
+            <div class="mdc-radio">
+              <input class="mdc-radio__native-control" type="radio" name="payWithinCA" value="alien" id="withinCA">
+              <div class="mdc-radio__background">
+                <div class="mdc-radio__outer-circle"></div>
+                <div class="mdc-radio__inner-circle"></div>
+              </div>
+            </div>
+            <label for="withinCA">Within California</label>
+          </div>
+          <div class="mdc-form-field">
+            <div class="mdc-radio">
+              <input class="mdc-radio__native-control" type="radio" name="payWithinCA" value="alien" id="outsideCA">
+              <div class="mdc-radio__background">
+                <div class="mdc-radio__outer-circle"></div>
+                <div class="mdc-radio__inner-circle"></div>
+              </div>
+            </div>
+            <label for="outsideCA">Outside California</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section buttons">
+        <button type="button" class="mdc-button mdc-button--raised" id="SendToServer">Save</button>
+        <button type="button" class="mdc-button" id="SeeDoc">Generate and View Document</button>
+        <button type="button" class="mdc-button" id="SubmitDoc" hidden>Submit Document</button>
       </div>
     </div>
 
-    <div class="form-section buttons">
-      <button type="button" class="mdc-button mdc-button--raised" id="SendToServer">Save</button>
-      <button type="button" class="mdc-button" id="SeeDoc">Generate and View Document</button>
-      <button type="button" class="mdc-button" id="SubmitDoc" hidden>Submit Document</button>
+    <h3 id="formTitle"></h3>
+
+    <div class="form-section">
+      <button type="button" class="mdc-button mdc-button--outlined" onclick="backToEditor()">Back To Course Editor</button>
     </div>
 
     <footer>
@@ -253,10 +260,14 @@
         checkSubmission();
         getInstructorData();
         itemActions();
-        setTextFieldValue("payForOther","");
+        setTextFieldValue("payForOther", "");
     }
 
     bootup();
+
+    $('button').each(function () {
+        mdc.ripple.MDCRipple.attachTo($(this)[0]);
+    });
 
 </script>
 
@@ -299,11 +310,12 @@
     color: #4d4d4d;
     font-size: 0.9rem;
   }
-  
-  .buttons {
-    max-width: 550px;
-    display: flex;
-    justify-content: space-between;
+
+  .buttons button {
+    margin-right: 15px;
+  }
+  .buttons button[hidden] {
+    display: none;
   }
 </style>
 

@@ -94,6 +94,10 @@
     if (isAGradClass) {
         $("#ProgramOutcomes").hide();
     }
+    
+    $('button').each(function () {
+        mdc.ripple.MDCRipple.attachTo($(this)[0]);
+    });
 
 </script>
 </body>

@@ -35,8 +35,19 @@
   <div class="main-wrapper">
     <h1 class="mdc-typography--headline3 title">Limited Engagement Form Submission</h1>
     <h1 class="mdc-typography--headline5 subtitle"><span id="SemesterTitle"></span>: <span id="CourseTitle"></span></h1>
+    <p>
+      You are about to submit the limited engagement faculty form for <b><span id="insName"></span></b>
+    </p>
+    <p>
+      Please enter your name to affirm that the information contained is true and correct
+    </p>
 
+    <input type="text" id="coordName">
 
+    <div class="form-section buttons">
+      <button type="button" class="mdc-button mdc-button--raised" onClick="makeDocument()">Submit</button>
+      <button type="button" class="mdc-button" onClick="backToForm()">Back to Document Form</button>
+    </div>
 
     <footer>
       <img src="img/logo-red.svg" alt="AARDVARC logo" class="logo">
@@ -49,27 +60,25 @@
   </div>
 </div>
 
-<script src="js/limitedEngagementForm.js"></script>
+<script src="js/limitedEngagementSubmit.js"></script>
 
 <script>
     getHeader();
 
-    $('.mdc-text-field').each(function () {
-        // new mdc.textField.MDCTextField($(this)[0]);
-    });
-
-    function bootup() {
-
-    }
-
     bootup();
+
+    $('button').each(function () {
+        mdc.ripple.MDCRipple.attachTo($(this)[0]);
+    });
 
 </script>
 
 </body>
 
 <style>
-
+  .buttons button {
+    margin-right: 7px;
+  }
 </style>
 
 </html>

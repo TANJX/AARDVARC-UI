@@ -103,6 +103,7 @@ function checkSubmissionOld() {
     var today = new Date();
     if (edate < today) {
         if (hasFilepath) {
+            console.log("SubmitDoc show");
             $("#SubmitDoc").show();
         }
     }
@@ -222,10 +223,14 @@ function submitDocument() {
     //alert("This feature is not yet live");
     //return;
     if (readyToGen()) {
-        readyToGen()
+        readyToGen();
         var lecIdGetParam = "&Instructor=" + instructorCode;
         window.location = "LimitedEngagementSubmit.html?ClassCode=" + classCode + lecIdGetParam;
     }
+}
+
+function backToEditor() {
+    window.location = "page.html?page=LimitedEngagementByClass&ClassCode=" + classCode;
 }
 
 function send() {
