@@ -64,13 +64,13 @@ function pdfExists() {
             var PDFPaths = JSON.parse(data);
             if (PDFPaths.Status == "EXISTS") {
                 if (PDFPaths.Submitted != "") {
-                    $("#DraftURL").text("View submitted PDF");
-                    $("#DraftURL").attr("href", PDFPaths.Submitted);
+                    $("#ViewDraft").text("View submitted PDF");
+                    $("#ViewDraft").attr("onclick", "window.open('" + PDFPaths.Submitted + "', '_blank')");
                     $("#ViewDraft").show();
                 }
                 else if (PDFPaths.Draft != "") {
-                    $("#DraftURL").text("View PDF Draft");
-                    $("#DraftURL").attr("href", PDFPaths.Draft);
+                    $("#ViewDraft").text("View PDF Draft");
+                    $("#ViewDraft").attr("onclick", "window.open('" + PDFPaths.Draft + "', '_blank')");
                     $("#ViewDraft").show();
                 }
             }
