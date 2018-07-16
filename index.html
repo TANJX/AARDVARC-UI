@@ -38,15 +38,25 @@
     <h1 class="mdc-typography--headline2 title">Course Editor</h1>
     <h1 class="mdc-typography--headline4 subtitle"><span id="SemesterTitle"></span>: <span id="CourseTitle"></span></h1>
     <h2>Guides</h2>
-    <div>
-      <a href='http://pharmacysyllabus.usc.edu/Demo/Document/Resources/AARDVARC_Instructions_v3.docx' target="_blank">
-        Click here</a> to download General Instructions for generation of the syllabus.<br>
-
-      <a href='http://pharmacysyllabus.usc.edu/Demo/Document/Resources/Fall2018_PharmD_Schedule_June7.pdf'
-         target="_blank" download>Click here</a> to download PharmD Schedule for Fall 2018<br>
-
-      <a href='http://pharmacysyllabus.usc.edu/Demo/Document/Resources/Fall2018_PhDMS_Schedule_June7.pdf'
-         target="_blank" download>Click here</a> to download PhD/MS Schedule for Fall 2018<br><br>
+    <div class="top-links">
+      <div>
+        <button class="mdc-button lowercase"
+                onclick="window.open('http://pharmacysyllabus.usc.edu/Demo/Document/Resources/AARDVARC_Instructions_v3.docx', '_blank')">
+          General Instructions for generation of the syllabus
+        </button>
+      </div>
+      <div>
+        <button class="mdc-button lowercase"
+                onclick="window.open('http://pharmacysyllabus.usc.edu/Demo/Document/Resources/Fall2018_PharmD_Schedule_June7.pdf', '_blank')">
+          PharmD Schedule for Fall 2018
+        </button>
+      </div>
+      <div>
+        <button class="mdc-button lowercase"
+                onclick="window.open('http://pharmacysyllabus.usc.edu/Demo/Document/Resources/AARDVARC_Instructions_v3.docx', '_blank')">
+          PhD/MS Schedule for Fall 2018
+        </button>
+      </div>
     </div>
     <h2>Sections</h2>
     <div class="mdc-list" id="menu-links">
@@ -86,7 +96,6 @@
         }
     });
 
-
     $('#menu-links .ripple').each(function () {
         mdc.ripple.MDCRipple.attachTo($(this)[0]);
     });
@@ -94,9 +103,13 @@
     if (isAGradClass) {
         $("#ProgramOutcomes").hide();
     }
-    
+
     $('button').each(function () {
         mdc.ripple.MDCRipple.attachTo($(this)[0]);
+    });
+
+    $('#MakeDocument').click(function () {
+        window.location = 'MakeDocument.html?ClassCode=' + classCode;
     });
 
 </script>

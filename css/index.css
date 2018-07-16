@@ -18,6 +18,10 @@
   margin: 14px 0 0 30px;
 }
 
+.top-links div {
+  margin: 10px 0;
+}
+
 .mdc-list {
   margin-top: 20px;
 }
@@ -75,6 +79,14 @@ footer p {
 
 #main-form {
   margin: 20px 0;
+}
+
+.mdc-button[hidden] {
+  display: none;
+}
+
+.lowercase {
+  text-transform: none;
 }
 
 /* color */

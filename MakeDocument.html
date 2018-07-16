@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AARDVARC-MATERIAL</title>
+  <link rel="stylesheet" href="lib/normalize.css">
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/form.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <script src="lib/jquery-3.3.1.min.js"></script>
+
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <script src="js/header.js"></script>
+</head>
+
+<body>
+<div class="banner">
+  <div class="banner-logo">
+    <img src="img/pharmacy-title.svg">
+  </div>
+</div>
+
+
+<div class="main">
+  <div class="main-wrapper">
+    <h1 class="mdc-typography--headline3 title">Generate Syllabus Documents</h1>
+    <h1 class="mdc-typography--headline5 subtitle"><span id="SemesterTitle"></span>: <span id="CourseTitle"></span></h1>
+
+    <h2>Completion Check</h2>
+    <div id="CheckResults">
+      <ul>
+        <li id="Basics">Course Information:</li>
+        <li id="Outcomes">Program Outcomes:</li>
+        <li id="Objectives">Learning Objectives:</li>
+        <li id="Methods">Teaching &amp; Assessment Methods:</li>
+        <li id="Assign">Grading Breakdown:</li>
+        <li id="ExamReturn">Exam Return Policy:</li>
+        <li id="MeetTimes">Event Schedule:</li>
+      </ul>
+    </div>
+
+    <p id="Complete"></p>
+
+    <div class="buttons">
+      <button class="mdc-button mdc-button--raised" type="button" id="GoMakeDoc" hidden>Make .pdf file</button>
+      <button class="mdc-button" type="button" id="Back">Go back</button>
+    </div>
+
+    <footer>
+      <img src="img/logo-red.svg" alt="AARDVARC logo" class="logo">
+      <p>USC AARDVARC ©</p>
+      <p>Syllabus Generator</p>
+      <p>Version: 2.0</p>
+      <p>Date: July 13, 2018</p>
+      <p>Author: Dab Brill, Mukesh Poptani, Mars Tan</p>
+    </footer>
+  </div>
+</div>
+
+<script src="js/makeDocument.js"></script>
+
+<script>
+    getHeader();
+
+    bootup();
+
+    $('button').each(function () {
+        mdc.ripple.MDCRipple.attachTo($(this)[0]);
+    });
+    $("#GoMakeDoc").click(function(){
+        window.location='../Coord/Redirect.html?ClassCode='+classCode;
+    });
+    $("#Back").click(function(){
+        window.location='index.html?ClassCode='+classCode;
+    });
+</script>
+
+</body>
+
+<style>
+  ul li {
+    margin: 24px 0;
+    position: relative;
+    list-style: none;
+  }
+
+  li.good {
+    color: #585858;
+  }
+
+  li::before {
+    font-family: 'Material Icons', sans-serif;
+    display: inline-block;
+    font-size: 28px;
+    position: absolute;
+    left: -35px;
+    top: -10px;
+    color: #585858;
+  }
+
+  li.good::before {
+    content: 'done';
+  }
+
+  li.bad {
+    color: var(--mdc-theme-primary);
+    /*text-decoration: underline;*/
+  }
+
+  li.bad::before {
+    content: 'edit';
+  }
+
+  .buttons button {
+    margin-right: 7px;
+  }
+
+  #Complete {
+    margin-top: 30px;
+  }
+
+  #Complete.good::after {
+    font-family: 'Material Icons', sans-serif;
+    display: inline-block;
+    content: 'mood';
+    font-size: 28px;
+    margin-left: 10px;
+  }
+
+  #Complete.bad::after {
+    font-family: 'Material Icons', sans-serif;
+    display: inline-block;
+    content: 'sentiment_dissatisfied';
+    font-size: 28px;
+    margin-left: 10px;
+  }
+</style>
+
+</html>

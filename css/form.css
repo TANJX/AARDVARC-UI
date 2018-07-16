@@ -1,3 +1,8 @@
+.required::before {
+  color: rgba(224, 69, 95, 1);
+  content: '* ';
+}
+
 input, textarea {
   display: block;
   width: 100%;
