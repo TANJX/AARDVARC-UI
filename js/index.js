@@ -11,11 +11,11 @@ dialog.listen('MDCDialog:cancel', function () {
 });
 
 function askIfCopy() {
-    dialog.show();
-    // if (headerClassData.AskCopy == 'Yes') {
-    //     var shouldCopy = confirm("This course existed in a previous term.\nWould you like to import that data?\nSelect OK to import from prior term\nSelect Cancel to have a \'blank slate\'");
-    //     sendIfCopyDesired(shouldCopy);
-    // }
+    if (headerClassData.AskCopy == 'Yes') {
+        // var shouldCopy = confirm("This course existed in a previous term.\nWould you like to import that data?\nSelect OK to import from prior term\nSelect Cancel to have a \'blank slate\'");
+        // sendIfCopyDesired(shouldCopy);
+        dialog.show();
+    }
 }
 
 function sendIfCopyDesired(doCopy) {
