@@ -73,6 +73,8 @@
     </div>
 
     <h2>Export</h2>
+
+    <button href="#" class="mdc-button mdc-button--raised ripple" id="ViewDraft" hidden></button>
     <button href="#" class="mdc-button ripple" id="MakeDocument">Generate Syllabus Documents</button>
 
     <footer>
@@ -86,9 +88,35 @@
   </div>
 </div>
 
+<aside id="my-mdc-dialog"
+       class="mdc-dialog">
+  <div class="mdc-dialog__surface">
+    <header class="mdc-dialog__header">
+      <h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+        Importing data from last semester
+      </h2>
+    </header>
+    <section id="my-mdc-dialog-description" class="mdc-dialog__body">
+      <p>This course existed in a previous term. Would you like to import that data?</p>
+    </section>
+    <footer class="mdc-dialog__footer">
+      <button type="button"
+              class="mdc-button mdc-button--raised mdc-dialog__footer__button mdc-dialog__footer__button--accept">Yes
+      </button>
+      <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">No
+      </button>
+    </footer>
+  </div>
+  <div class="mdc-dialog__backdrop"></div>
+</aside>
+
+<script src="js/index.js"></script>
+
 <script>
     var classCode = getGetVariable("ClassCode");
     getHeader();
+    pdfExists();
+    askIfCopy();
 
     $("#menu-links a").click(function () {
         if (!invalid) {
@@ -111,6 +139,9 @@
     $('#MakeDocument').click(function () {
         window.location = 'MakeDocument.html?ClassCode=' + classCode;
     });
+
+
+
 
 </script>
 </body>
