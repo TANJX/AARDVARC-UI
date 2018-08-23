@@ -58,7 +58,10 @@
     <div id="main-form"></div>
     <div class="buttons">
       <button class="mdc-button mdc-button--outlined ripple" id="save-btn">Save</button>
-      <button class="mdc-button mdc-button--raised ripple btn" type="submit" id="continue-btn">Save and Continue</button>
+      <button class="mdc-button mdc-button--raised ripple btn" id="continue-btn">Save and Continue
+      </button>
+      <button class="mdc-button mdc-button--raised ripple btn" id="gen-btn">Generate Syllabus Documents
+      </button>
     </div>
 
     <footer>
@@ -131,6 +134,10 @@
         }
     });
 
+    $('#gen-btn').click(function () {
+        window.location = 'MakeDocument.html?ClassCode=' + classCode;
+    });
+
     function switchTo(page) {
         $("#main-form").load("pages/" + page + ".htm", function (responseTxt, statusTxt, xhr) {
             if (statusTxt === "success") {
@@ -139,6 +146,13 @@
                 history.pushState(null, null, "page.html?page=" + page + "&ClassCode=" + classCode);
                 currentPage = page;
                 changed = false;
+                if (page === $('#menu-links :last-child').attr('id')) {
+                    $('#gen-btn').show();
+                    $('#continue-btn').hide();
+                } else {
+                    $('#gen-btn').hide();
+                    $('#continue-btn').show();
+                }
             }
             if (statusTxt === "error")
                 alert("Error: " + xhr.status + ": " + xhr.statusText);
@@ -164,7 +178,6 @@
     $('.left-col .ripple').each(function () {
         mdc.ripple.MDCRipple.attachTo($(this)[0]);
     });
-
 
 </script>
 </body>

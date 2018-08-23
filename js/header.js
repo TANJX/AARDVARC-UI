@@ -117,10 +117,10 @@ function updateField(div) {
         changed = true;
     });
     $(div + "#main-form button").click(function () {
-        // if (!$(this).hasClass("save-btn")) {
+        if (!$(this).hasClass("save-btn")) {
             console.log("clicked!");
             changed = true;
-        // }
+        }
     });
     $(div + '.mdc-form-field').each(function () {
         var formField = new mdc.formField.MDCFormField($(this)[0]);
