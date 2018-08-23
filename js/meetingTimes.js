@@ -525,10 +525,13 @@ function makeDateSelector(m) {
 
 function makeAddObject(m) {
     var $ret = $("<div></div>");
-    var $clicky = $("<button type='button' class='mdc-icon-button material-icons'>" +
+    var addbtn = $("<button type='button' class='mdc-icon-button material-icons'>" +
         "<i class='material-icons'>add</i>" +
         "</button>");
-    $clicky.click(function () {
+    var savebtn = $("<button type='button' class='mdc-icon-button material-icons save-btn'>" +
+        "<i class='material-icons'>save</i>" +
+        "</button>");
+    addbtn.click(function () {
         //alert("I\nSir\nDo Exist\n"+m);
         var newMT = [];
         for (var i in meetingTimes) {
@@ -547,7 +550,11 @@ function makeAddObject(m) {
         dispMeetingTimes();
         window.scrollBy(0, 115);
     });
-    $ret.append($clicky);
+    savebtn.click(function () {
+        save();
+    });
+    $ret.append(addbtn);
+    $ret.append(savebtn);
     // var $save = $("<button type='button' id='SendToServer'>Save</button>");
     // $save.click(sendToServer());
     // $ret.append($save);

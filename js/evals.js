@@ -21,6 +21,7 @@ function getInstructors() {
                 }
             }
             makeTables();
+            updateField();
         }
     });
 }

@@ -134,6 +134,10 @@ hr {
   text-align: right;
 }
 
+.buttons button {
+  margin-right: 7px;
+}
+
 /* color */
 
 :root {
