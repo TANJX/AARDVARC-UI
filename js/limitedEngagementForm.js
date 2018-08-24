@@ -195,7 +195,7 @@ function readyToGen() {
 
 function genDoc() {
     if (readyToGen()) {
-        $('#gen-btn').attr('disabled', true);
+        $('#SeeDoc').attr('disabled', true);
         $('#pdf-status').show();
 
         send();
