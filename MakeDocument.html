@@ -30,7 +30,6 @@
   </div>
 </div>
 
-
 <div class="main">
   <div class="main-wrapper">
     <h1 class="mdc-typography--headline3 title">Generate Syllabus Documents</h1>
@@ -70,6 +69,7 @@
       </div>
     </div>
     <div id="gen-result"></div>
+    <div id="submit-result"></div>
 
     <footer>
       <img src="img/logo-red.svg" alt="AARDVARC logo" class="logo">
@@ -115,9 +115,11 @@
         xmlhttp.send();
 
     });
+
     $("#Back").click(function () {
         window.location = 'index.html?ClassCode=' + classCode;
     });
+
     function postAndRedirect(url, postData) {
         var postFormStr = "<form method='POST' action='" + url + "'>\n";
 
@@ -131,7 +133,7 @@
 
         var formElement = $(postFormStr);
 
-        $('body').append(formElement);
+        $('#submit-result').append(formElement);
         $(formElement).submit();
     }
 
