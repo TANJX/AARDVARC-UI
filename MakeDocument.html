@@ -56,6 +56,21 @@
       <button class="mdc-button" type="button" id="Back">Go back</button>
     </div>
 
+    <div id="pdf-status" hidden>
+      <p>Please Wait While Program Generates Your Syllabus</p>
+      <div role="progressbar" class="mdc-linear-progress mdc-linear-progress--indeterminate">
+        <div class="mdc-linear-progress__buffering-dots"></div>
+        <div class="mdc-linear-progress__buffer"></div>
+        <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+          <span class="mdc-linear-progress__bar-inner"></span>
+        </div>
+        <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+          <span class="mdc-linear-progress__bar-inner"></span>
+        </div>
+      </div>
+    </div>
+    <div id="gen-result"></div>
+
     <footer>
       <img src="img/logo-red.svg" alt="AARDVARC logo" class="logo">
       <p>USC AARDVARC ©</p>
@@ -77,12 +92,60 @@
     $('button').each(function () {
         mdc.ripple.MDCRipple.attachTo($(this)[0]);
     });
-    $("#GoMakeDoc").click(function(){
-        window.location='../Coord/Redirect.html?ClassCode='+classCode;
+    $("#GoMakeDoc").click(function () {
+        // window.location='../Coord/Redirect.html?ClassCode='+classCode;
+
+        $(this).attr('disabled', true);
+        $('#pdf-status').show();
+
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                console.log("gen complete");
+                $('#pdf-status').hide();
+                document.getElementById("gen-result").innerHTML = this.responseText;
+
+                $('#gen-result button').each(function () {
+                    mdc.ripple.MDCRipple.attachTo($(this)[0]);
+                });
+            }
+        };
+
+        xmlhttp.open("GET", '../Server/MakeDoc.php?ClassCode=' + classCode);
+        xmlhttp.send();
+
     });
-    $("#Back").click(function(){
-        window.location='index.html?ClassCode='+classCode;
+    $("#Back").click(function () {
+        window.location = 'index.html?ClassCode=' + classCode;
     });
+    function postAndRedirect(url, postData) {
+        var postFormStr = "<form method='POST' action='" + url + "'>\n";
+
+        for (var key in postData) {
+            if (postData.hasOwnProperty(key)) {
+                postFormStr += "<input type='hidden' name='" + key + "' value='" + postData[key] + "'></input>";
+            }
+        }
+
+        postFormStr += "</form>";
+
+        var formElement = $(postFormStr);
+
+        $('body').append(formElement);
+        $(formElement).submit();
+    }
+
+    function redirectToAcceptance(code, path, sem, id) {
+        var ball =
+            {
+                Code: code,
+                Path: path,
+                Sem: sem,
+                ID: id
+            };
+        postAndRedirect("../Server/AcceptSyllabus.php", ball);
+    }
+
 </script>
 
 </body>
@@ -143,6 +206,10 @@
     content: 'sentiment_dissatisfied';
     font-size: 28px;
     margin-left: 10px;
+  }
+
+  #pdf-status {
+    margin: 25px 0;
   }
 </style>
 
