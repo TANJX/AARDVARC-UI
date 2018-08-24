@@ -136,7 +136,8 @@
         $.post("../Server/AcceptSyllabus.php", ball, function (data) {
             $("#submit-result").show().html(data);
             $('#AcceptButton').attr('disabled', true);
-            $('#Back').appendTo('#submit-result');
+            $('#gen-result .buttons :first-child').hide();
+            $('#Back').appendTo('#submit-result .button');
         });
         // postAndRedirect("../Server/AcceptSyllabus.php", ball);
     }

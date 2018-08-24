@@ -398,7 +398,7 @@ $linkFilename = $urlPath . "/" . $courseID;
 //echo "<a href='{$linkFilename}.docx'>Get Document File</a><br>";
 
 echo "<div class='buttons'>";
-echo "<button type=\"button\" class=\"mdc-button mdc-button--outlined\" onclick='window.open(\"{$linkFilename}.pdf?Timestamp={$PHPTimestamp})\"'>Get PDF File</button>";
+echo "<button type=\"button\" class=\"mdc-button mdc-button--outlined\" onclick='window.open(\"{$linkFilename}.pdf?Timestamp={$PHPTimestamp}\")'>Get PDF File</button>";
 //echo "<button id = 'BackButton' onclick = 'goBack(\"" . $ClassCode . "\")'>Go back without submitting</button><br>";
 echo "<button type=\"button\" class=\"mdc-button mdc-button--outlined\" id = 'AcceptButton' onclick = 'redirectToAcceptance(\"" . $ClassCode . "\",\"" . $linkFilename . "\",\"" . $semPath . "\",\"" . $courseID . "\")'>Accept Syllabus</button>";
 echo "</div>";
