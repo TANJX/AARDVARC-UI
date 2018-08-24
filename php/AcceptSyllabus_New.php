@@ -15,7 +15,7 @@ foreach($extension as $ext){
 
 $sql = "INSERT INTO pdf (AccessCode,Path,Timestamp) VALUES ('{$_POST["Code"]}','{$finalPath}',now()) ON DUPLICATE KEY UPDATE Path = '{$finalPath}', Timestamp = now();";
 $SQLDB->query($sql);
-echo "<p>Submitted</p>"
+echo "<p>Successfully Submitted</p>"
 //echo "<a href='{$finalName}.pdf'>Download Submitted PDF</a><br>";
 //echo "<a href='http://pharmacysyllabus.usc.edu/Syllabus/Coord/Portal.html?ClassCode={$_POST["Code"]}'>Go back to course portal</a>";
 ?>

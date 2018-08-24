@@ -51,7 +51,7 @@
     <p id="Complete"></p>
 
     <div class="buttons">
-      <button class="mdc-button mdc-button--raised" type="button" id="GoMakeDoc" hidden>Make .pdf file</button>
+      <button class="mdc-button mdc-button--raised" type="button" id="GoMakeDoc" hidden>Make pdf file</button>
       <button class="mdc-button" type="button" id="Back">Go back</button>
     </div>
 
@@ -145,7 +145,10 @@
                 Sem: sem,
                 ID: id
             };
-        postAndRedirect("../Server/AcceptSyllabus.php", ball);
+        $.post("../Server/AcceptSyllabus.php", ball, function (data) {
+            $("#submit-result").html(data);
+        });
+        // postAndRedirect("../Server/AcceptSyllabus.php", ball);
     }
 
 </script>
