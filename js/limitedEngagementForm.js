@@ -195,9 +195,28 @@ function readyToGen() {
 
 function genDoc() {
     if (readyToGen()) {
+        $('#gen-btn').attr('disabled', true);
+        $('#pdf-status').show();
+
         send();
-        var lecIdGetParam = "&Instructor=" + instructorCode;
-        goPage('RedirectLimitedEngagement', lecIdGetParam);
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                console.log("gen complete");
+                $('#pdf-status').hide();
+                $('#gen-result').show();
+                var text = this.responseText;
+                $('#gen-result').append($(text));
+                // document.getElementById("gen-result").innerHTML = this.responseText;
+
+                $('#gen-result button').each(function () {
+                    mdc.ripple.MDCRipple.attachTo($(this)[0]);
+                });
+            }
+        };
+        xmlhttp.open("GET",
+            '../Server/MakeDocLimitedEngagement.php?ClassCode=' + classCode + '&InstructorCode=' + instructorCode);
+        xmlhttp.send();
     }
 }
 
