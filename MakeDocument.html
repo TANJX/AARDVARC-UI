@@ -68,8 +68,11 @@
         </div>
       </div>
     </div>
-    <div id="gen-result"></div>
-    <div id="submit-result"></div>
+    <div id="gen-result" hidden>
+      <h2>Syllabus Successfully Generated</h2>
+    </div>
+
+    <div id="submit-result" hidden></div>
 
     <footer>
       <img src="img/logo-red.svg" alt="AARDVARC logo" class="logo">
@@ -103,7 +106,10 @@
             if (this.readyState === 4 && this.status === 200) {
                 console.log("gen complete");
                 $('#pdf-status').hide();
-                document.getElementById("gen-result").innerHTML = this.responseText;
+                $('#gen-result').show();
+                var text = this.responseText;
+                $('#gen-result').append($(text));
+                // document.getElementById("gen-result").innerHTML = this.responseText;
 
                 $('#gen-result button').each(function () {
                     mdc.ripple.MDCRipple.attachTo($(this)[0]);
@@ -120,33 +126,17 @@
         window.location = 'index.html?ClassCode=' + classCode;
     });
 
-    function postAndRedirect(url, postData) {
-        var postFormStr = "<form method='POST' action='" + url + "'>\n";
-
-        for (var key in postData) {
-            if (postData.hasOwnProperty(key)) {
-                postFormStr += "<input type='hidden' name='" + key + "' value='" + postData[key] + "'></input>";
-            }
-        }
-
-        postFormStr += "</form>";
-
-        var formElement = $(postFormStr);
-
-        $('#submit-result').append(formElement);
-        $(formElement).submit();
-    }
-
     function redirectToAcceptance(code, path, sem, id) {
-        var ball =
-            {
-                Code: code,
-                Path: path,
-                Sem: sem,
-                ID: id
-            };
+        var ball = {
+            Code: code,
+            Path: path,
+            Sem: sem,
+            ID: id
+        };
         $.post("../Server/AcceptSyllabus.php", ball, function (data) {
-            $("#submit-result").html(data);
+            $("#submit-result").show().html(data);
+            $('#AcceptButton').attr('disabled', true);
+            $('#Back').appendTo('#submit-result');
         });
         // postAndRedirect("../Server/AcceptSyllabus.php", ball);
     }
@@ -215,6 +205,10 @@
 
   #pdf-status {
     margin: 25px 0;
+  }
+
+  #gen-result button {
+    margin-right: 20px;
   }
 </style>
 
